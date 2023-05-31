@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio3">
+  <ClassDiagramComponents>
+    <Class name="Auto" package="" visibility="public" xPosition="60.0" yPosition="43.0">
+      <Fields>
+        <Field name="color" type="String" visibility="private"/>
+        <Field name="patente" type="String" visibility="private"/>
+        <Field name="combustible" type="float" visibility="private"/>
+        <Field name="rueda1" type="Rueda" visibility="private"/>
+        <Field name="rueda2" type="Rueda" visibility="private"/>
+        <Field name="rueda3" type="Rueda" visibility="private"/>
+        <Field name="rueda4" type="Rueda" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="color"/>
+          <Argument type="String" name="patente"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="avanzar" returnType="void" visibility="public">
+          <Argument type="float" name="metros"/>
+        </Method>
+        <Method name="retroceder" returnType="void" visibility="public">
+          <Argument type="float" name="metros"/>
+        </Method>
+        <Method name="llenarTanque" returnType="void" visibility="public"/>
+        <Method name="setRuedas" returnType="void" visibility="public">
+          <Argument type="Rueda" name="r1"/>
+          <Argument type="Rueda" name="r2"/>
+          <Argument type="Rueda" name="r3"/>
+          <Argument type="Rueda" name="r4"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Rueda" package="" visibility="public" xPosition="156.0" yPosition="474.0">
+      <Fields>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="presion" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="marca"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="inflar" returnType="void" visibility="public"/>
+        <Method name="pinchar" returnType="void" visibility="public"/>
+        <Method name="desinflar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Agregar" source="Auto" target="Rueda" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

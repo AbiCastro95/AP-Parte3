@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio3">
+  <ClassDiagramComponents>
+    <Class name="Circulo" package="ejercicio3" visibility="public" xPosition="294.0" yPosition="21.0">
+      <Fields>
+        <Field name="RADIO" type="double" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="radio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calcularArea" returnType="void" visibility="public"/>
+        <Method name="calcularPerimetro" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ejercicio3" package="ejercicio3" visibility="public" xPosition="22.0" yPosition="15.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Rectangulo" package="ejercicio3" visibility="public" xPosition="294.0" yPosition="243.0">
+      <Fields>
+        <Field name="base" type="double" visibility="private"/>
+        <Field name="altura" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="base"/>
+          <Argument type="double" name="altura"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calcularArea" returnType="void" visibility="public"/>
+        <Method name="calcularPerimetro" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="calculosFormas" package="ejercicio3" visibility="public" xPosition="36.0" yPosition="156.0">
+      <Methods>
+        <Method name="calcularArea" returnType="void" visibility="public"/>
+        <Method name="calcularPerimetro" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="ejercicio3.Circulo" target="ejercicio3.calculosFormas"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="ejercicio3.Rectangulo" target="ejercicio3.calculosFormas"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

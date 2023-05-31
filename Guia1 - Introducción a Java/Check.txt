@@ -1,0 +1,18 @@
+Respuestas
+1- op 4
+2- Un método que se utiliza para realizar una tarea específica sin necesidad de crear una instancia de una clase. (Método estático)
+3- Una clase define las características y comportamientos de un objeto, mientras que un objeto es una instancia de una clase.
+4- Consiste en ocultar atributos de un objeto de manera que solo se pueda cambiar mediante operaciones definidas en ese objeto. (Encapsulamiento)
+5- Private
+6- Un bloque de código que se utiliza para realizar una tarea específica. (Método)
+7- Una variable que se utiliza para almacenar datos en una clase. (Atributo)
+8- El método constructor puede retornar un valor. (Falso)
+9- Significa que todas las instancias de la clase comparten una misma copia del atributo. (Atributo static)
+10- El valor del atributo no puede ser modificado después de la inicialización.
+
+Autocorrección (Cada una vale 10p)
+1-B | 2-B | 3-B | 4- | 5-B | 6-B | 7-B | 8-B | 9-B | 10-B
+
+Corrección
+1-M opción correcta 2 | 2-B | 3-B | 4-B | 5-B | 6-B | 7-B 
+8-Error de la plataforma. No hay respuestas correctas | 9-B | 10-B | 

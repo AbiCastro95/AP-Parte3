@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Alquiler">
+  <ClassDiagramComponents>
+    <Class name="Alquiler" package="ejercicioextra1" visibility="public" xPosition="20.0" yPosition="21.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="fechaAlquiler" type="LocalDate" visibility="package"/>
+        <Field name="fechaDevolucion" type="LocalDate" visibility="package"/>
+        <Field name="amarre" type="String" visibility="private"/>
+        <Field name="barco" type="Barco" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="LocalDate" name="fechaAlquiler"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setNombre" returnType="String" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="calculoMontoTotal" returnType="void" visibility="public"/>
+        <Method name="menuAlq" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Barco" package="" visibility="protected" xPosition="315.0" yPosition="21.0">
+      <Fields>
+        <Field name="matricula" type="String" visibility="protected"/>
+        <Field name="eslora" type="float" visibility="protected"/>
+        <Field name="fabricacion" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="float" name="eslora"/>
+          <Argument type="String" name="fabricacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMatricula" returnType="String" visibility="public"/>
+        <Method name="getModulo" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BarcoConMotor" package="" visibility="public" xPosition="20.0" yPosition="410.0">
+      <Fields>
+        <Field name="potencia" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="float" name="eslora"/>
+          <Argument type="String" name="añoFabricacion"/>
+          <Argument type="int" name="potencia"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getModulo" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Yates" package="" visibility="public" xPosition="47.0" yPosition="613.0">
+      <Fields>
+        <Field name="camarotes" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="float" name="eslora"/>
+          <Argument type="String" name="añoFabricacion"/>
+          <Argument type="int" name="potencia"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setCamarotes" returnType="int" visibility="public">
+          <Argument type="int" name="camarotes"/>
+        </Method>
+        <Method name="getModulo" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Veleros" package="" visibility="public" xPosition="508.0" yPosition="410.0">
+      <Fields>
+        <Field name="cantMastiles" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="float" name="eslora"/>
+          <Argument type="String" name="añoFabricacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setCantMastiles" returnType="int" visibility="public">
+          <Argument type="int" name="cantMastiles"/>
+        </Method>
+        <Method name="getModulo" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SistemaAlquilerAmarres" package="" visibility="public" xPosition="714.0" yPosition="21.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Barco" source="ejercicioextra1.Alquiler" target="Barco" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Yates" target="BarcoConMotor"/>
+    <IsRelation name="is" source="BarcoConMotor" target="Barco"/>
+    <IsRelation name="is" source="Veleros" target="Barco"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

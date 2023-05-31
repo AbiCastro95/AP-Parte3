@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EjercicioExtra2">
+  <ClassDiagramComponents>
+    <Class name="Auto" package="ejercicioextra2" visibility="public" xPosition="211.0" yPosition="482.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="setModelo" returnType="void" visibility="public">
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="setCombustible" returnType="void" visibility="public">
+          <Argument type="Combustible" name="combustible"/>
+        </Method>
+        <Method name="calcularConsumoCombustible" returnType="float" visibility="public">
+          <Argument type="float" name="distancia"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Camion" package="ejercicioextra2" visibility="public" xPosition="544.0" yPosition="482.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="setModelo" returnType="void" visibility="public">
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="setCombustible" returnType="void" visibility="public">
+          <Argument type="Combustible" name="combustible"/>
+        </Method>
+        <Method name="calcularConsumoCombustible" returnType="float" visibility="public">
+          <Argument type="float" name="distancia"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Camioneta" package="ejercicioextra2" visibility="public" xPosition="871.0" yPosition="482.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="setModelo" returnType="void" visibility="public">
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="setCombustible" returnType="void" visibility="public">
+          <Argument type="Combustible" name="combustible"/>
+        </Method>
+        <Method name="calcularConsumoCombustible" returnType="float" visibility="public">
+          <Argument type="float" name="distancia"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Combustible" package="ejercicioextra2" visibility="public" xPosition="954.0" yPosition="20.0">
+      <Fields>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="precio" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="getPrecio" returnType="float" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="float" name="precio"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EjercicioExtra2" package="ejercicioextra2" visibility="public" xPosition="18.0" yPosition="367.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Vehiculo" package="ejercicioextra2" visibility="public" isAbstract="true" xPosition="524.0" yPosition="20.0">
+      <Fields>
+        <Field name="marca" type="String" visibility="protected"/>
+        <Field name="modelo" type="String" visibility="protected"/>
+        <Field name="combustible" type="Combustible" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularConsumoCombustible" returnType="float" visibility="public" isAbstract="true">
+          <Argument type="float" name="distancia"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Viaje" package="ejercicioextra2" visibility="public" xPosition="18.0" yPosition="20.0">
+      <Fields>
+        <Field name="read" type="Scanner" visibility="package"/>
+        <Field name="origen" type="String" visibility="private"/>
+        <Field name="destino" type="String" visibility="private"/>
+        <Field name="peajes" type="int" visibility="private"/>
+        <Field name="vehiculo" type="Vehiculo" visibility="private"/>
+        <Field name="distancia" type="float" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="origen"/>
+          <Argument type="String" name="destino"/>
+          <Argument type="int" name="peajes"/>
+          <Argument type="Vehiculo" name="vehiculo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setVehiculo" returnType="void" visibility="public">
+          <Argument type="Vehiculo" name="vehiculo"/>
+        </Method>
+        <Method name="calculoDistancia" returnType="void" visibility="public"/>
+        <Method name="costoPeajes" returnType="int" visibility="public"/>
+        <Method name="costoCombustible" returnType="float" visibility="public"/>
+        <Method name="calculoTotal" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="ejercicioextra2.Camion" target="ejercicioextra2.Combustible" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="ejercicioextra2.Auto" target="ejercicioextra2.Vehiculo"/>
+    <UseRelation source="ejercicioextra2.Viaje" target="ejercicioextra2.Vehiculo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="ejercicioextra2.Camioneta" target="ejercicioextra2.Vehiculo"/>
+    <IsRelation name="is" source="ejercicioextra2.Camion" target="ejercicioextra2.Vehiculo"/>
+    <UseRelation source="ejercicioextra2.Camioneta" target="ejercicioextra2.Combustible" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="combustible" source="ejercicioextra2.Vehiculo" target="ejercicioextra2.Combustible" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vehiculo" source="ejercicioextra2.Viaje" target="ejercicioextra2.Vehiculo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ejercicioextra2.Auto" target="ejercicioextra2.Combustible" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

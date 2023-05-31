@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio4">
+  <ClassDiagramComponents>
+    <Class name="Guerrero" package="ejercicio4" visibility="public" xPosition="33.0" yPosition="153.0">
+      <Fields>
+        <Field name="caballo" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nick"/>
+          <Argument type="Position" name="ubicacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="Avanzar" returnType="void" visibility="public"/>
+        <Method name="Disparar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Personaje" package="ejercicio4" visibility="public" isAbstract="true" xPosition="339.0" yPosition="20.0">
+      <Fields>
+        <Field name="ubicacion" type="Position" visibility="protected"/>
+        <Field name="nick" type="String" visibility="protected"/>
+        <Field name="vidas" type="int" visibility="protected"/>
+        <Field name="energia" type="int" visibility="protected"/>
+        <Field name="orientacion" type="char" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nick"/>
+          <Argument type="Position" name="ubicacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="Disparar" returnType="void" visibility="public"/>
+        <Method name="Girar" returnType="void" visibility="public"/>
+        <Method name="Avanzar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Position" package="ejercicio4" visibility="public" xPosition="701.0" yPosition="32.0">
+      <Fields>
+        <Field name="y" type="int" visibility="private"/>
+        <Field name="x" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="x"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getY" returnType="int" visibility="public"/>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="getX" returnType="int" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TestHerencia" package="ejercicio4" visibility="public" xPosition="33.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="ejercicio4.Guerrero" target="ejercicio4.Personaje"/>
+    <HasRelation name="ubicacion" source="ejercicio4.Personaje" target="ejercicio4.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,70 @@
+Condicionales:
+Ejercicio 1:
+Escribe un programa que solicite al usuario su edad y le indique si es mayor o menor de edad.
+
+Ejercicio 2:
+Escribe un programa que solicite al usuario una calificación numérica del 0 al 100 y muestre la letra correspondiente según la siguiente tabla:
+
+Si la calificación es mayor o igual a 90, la letra es A.
+Si la calificación es mayor o igual a 80 y menor que 90, la letra es B.
+Si la calificación es mayor o igual a 70 y menor que 80, la letra es C.
+Si la calificación es mayor o igual a 60 y menor que 70, la letra es D.
+Si la calificación es menor que 60, la letra es F.
+
+Ejercicio 3: Calculadora de descuentos
+Escribe un programa en Java que le pida al usuario el precio de un producto y su edad.
+Si el usuario tiene menos de 18 años, se le aplicará un descuento del 10% sobre el precio.
+Si el usuario tiene 18 años o más, se le aplicará un descuento del 5%.
+El programa deberá mostrar el precio final del producto con el descuento aplicado.
+
+Ejercicio 4: Cálculo de IMC
+Escribe un programa en Java que calcule el Índice de Masa Corporal (IMC) de una persona.
+El programa deberá pedir al usuario su peso en kilogramos y su altura en metros, y luego calcular el IMC utilizando la fórmula:
+IMC = peso / (altura * altura). El programa deberá mostrar el IMC calculado y su interpretación de acuerdo a la siguiente tabla:
+
+IMC menor a 18.5: Bajo peso
+IMC entre 18.5 y 24.9: Peso normal
+IMC entre 25 y 29.9: Sobrepeso
+IMC entre 30 y 34.9: Obesidad grado 1
+IMC entre 35 y 39.9: Obesidad grado 2
+IMC mayor o igual a 40: Obesidad grado 3
+Nota: El IMC es una medida aproximada y no tiene en cuenta la distribución de la masa muscular, por lo que no se recomienda
+utilizarlo como único indicador de salud.
+
+Bucles:
+Ejercicio 1: Calculadora de área y perímetro
+Escribe un programa que solicite al usuario ingresar el radio de un círculo.
+Utilizando las funciones de Math, calcula y muestra el área y el perímetro del círculo.
+
+Ejercicio 2: Contar letras en una cadena
+Escribe un programa que solicite al usuario ingresar una cadena de texto. Utilizando las funciones de String,
+cuenta y muestra el número de letras que contiene la cadena (sin contar espacios ni caracteres especiales).
+
+Ejercicio 3: Tabla de multiplicar
+Escribe un programa que solicite al usuario ingresar un número entero. Utilizando una sentencia repetitiva (por ejemplo, un bucle for),
+muestra la tabla de multiplicar de ese número del 1 al 10.
+
+Ejercicio 4: Números primos en un rango
+Escribe un programa que solicite al usuario ingresar dos números enteros: un número inicial y un número final.
+Utilizando una sentencia repetitiva (por ejemplo, un bucle for), muestra todos los números primos que se encuentran en ese rango.
+
+Otros
+
+1. Escribe un programa que le pida al usuario ingresar un número entero y
+luego imprima el cuadrado de ese número.
+
+2. Escribe un programa que le pida al usuario ingresar una cadena de texto y
+luego determine cuántas consonantes contiene (sin distinguir entre mayúsculas y minúsculas).
+
+3. Escribe un programa que le pida al usuario ingresar un número entero positivo y
+luego imprima todos los números pares desde 2 hasta ese número.
+
+4. Escribe un programa que le pida al usuario ingresar una cadena de texto y
+luego determine si es un palíndromo (es decir, si se lee igual de izquierda a derecha
+y de derecha a izquierda).
+
+5. Escribe un programa que genere un número aleatorio entre 1 y 100,
+y le pida al usuario adivinar ese número.
+El programa debe indicar si el número ingresado es mayor o menor que el número generado,
+y permitir al usuario realizar múltiples intentos hasta adivinar correctamente.
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EjercicioExtra4">
+  <ClassDiagramComponents>
+    <Class name="Juego" package="ejercicioextra4" visibility="public" xPosition="17.0" yPosition="207.0">
+      <Fields>
+        <Field name="jugador1" type="Jugador" visibility="private"/>
+        <Field name="jugador2" type="Jugador" visibility="private"/>
+        <Field name="revolver" type="RevolverDeAgua" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="llenarJuego" returnType="void" visibility="public">
+          <Argument type="Jugador" name="jugador1"/>
+          <Argument type="Jugador" name="jugador2"/>
+          <Argument type="RevolverDeAgua" name="r"/>
+        </Method>
+        <Method name="ronda" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Jugador" package="ejercicioextra4" visibility="public" xPosition="509.0" yPosition="49.0">
+      <Fields>
+        <Field name="id" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private" isFinal="true"/>
+        <Field name="mojado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="isMojado" returnType="boolean" visibility="public"/>
+        <Method name="disparo" returnType="void" visibility="public">
+          <Argument type="RevolverDeAgua" name="r"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RevolverDeAgua" package="ejercicioextra4" visibility="public" xPosition="509.0" yPosition="283.0">
+      <Fields>
+        <Field name="posicionActual" type="int" visibility="private"/>
+        <Field name="posicionAgua" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="llenarRevolver" returnType="void" visibility="public"/>
+        <Method name="getPosicionActual" returnType="double" visibility="public"/>
+        <Method name="getPosicionAgua" returnType="double" visibility="public"/>
+        <Method name="mojar" returnType="boolean" visibility="public"/>
+        <Method name="siguienteChorro" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RuletaRusa" package="ejercicioextra4" visibility="public" xPosition="55.0" yPosition="49.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Jugadores" source="ejercicioextra4.Juego" target="ejercicioextra4.Jugador" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Revolver" source="ejercicioextra4.Juego" target="ejercicioextra4.RevolverDeAgua" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation source="ejercicioextra4.Jugador" target="ejercicioextra4.RevolverDeAgua" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

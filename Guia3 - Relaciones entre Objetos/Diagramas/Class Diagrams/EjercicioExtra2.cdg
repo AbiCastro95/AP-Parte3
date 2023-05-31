@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Dado">
+  <ClassDiagramComponents>
+    <Class name="Dado" package="ejercicioextra2" visibility="public" xPosition="294.0" yPosition="155.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="generarNumero" returnType="void" visibility="public"/>
+        <Method name="verNro" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Jugador" package="" visibility="public" xPosition="41.0" yPosition="136.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="clasificacion" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="tirarDado" returnType="Dado" visibility="public">
+          <Argument type="Dado" name="dado"/>
+        </Method>
+        <Method name="verClasificacion" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TestJuego" package="" visibility="public" xPosition="41.0" yPosition="22.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="TirarDado" source="Jugador" target="ejercicioextra2.Dado" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

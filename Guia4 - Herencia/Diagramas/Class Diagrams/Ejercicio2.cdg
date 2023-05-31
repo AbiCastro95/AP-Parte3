@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ejercicio2">
+  <ClassDiagramComponents>
+    <Class name="Ejercicio2" package="ejercicio2" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Electrodomestico" package="ejercicio2" visibility="public" isAbstract="true" xPosition="259.0" yPosition="20.0">
+      <Fields>
+        <Field name="precio" type="float" visibility="protected"/>
+        <Field name="color" type="String" visibility="protected"/>
+        <Field name="consumoEnergetico" type="char" visibility="protected"/>
+        <Field name="peso" type="float" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="float" name="precio"/>
+          <Argument type="String" name="color"/>
+          <Argument type="char" name="letra"/>
+          <Argument type="float" name="peso"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="comprobarConsumoEnergetico" returnType="char" visibility="public">
+          <Argument type="char" name="letra"/>
+        </Method>
+        <Method name="comprobarColor" returnType="String" visibility="public">
+          <Argument type="String" name="color"/>
+        </Method>
+        <Method name="precioFinal" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Lavadora" package="ejercicio2" visibility="public" xPosition="20.0" yPosition="353.0">
+      <Fields>
+        <Field name="carga" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="float" name="carga"/>
+          <Argument type="float" name="precio"/>
+          <Argument type="String" name="color"/>
+          <Argument type="char" name="letra"/>
+          <Argument type="float" name="peso"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCarga" returnType="float" visibility="public"/>
+        <Method name="setCarga" returnType="void" visibility="public">
+          <Argument type="float" name="carga"/>
+        </Method>
+        <Method name="precioFinal" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Televisor" package="ejercicio2" visibility="public" xPosition="482.0" yPosition="353.0">
+      <Fields>
+        <Field name="resolucion" type="int" visibility="private"/>
+        <Field name="sintonizadorTDT" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="resolucion"/>
+          <Argument type="boolean" name="sintonizadorTDT"/>
+          <Argument type="float" name="precio"/>
+          <Argument type="String" name="color"/>
+          <Argument type="char" name="letra"/>
+          <Argument type="float" name="peso"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getResolucion" returnType="int" visibility="public"/>
+        <Method name="setResolucion" returnType="void" visibility="public">
+          <Argument type="int" name="resolucion"/>
+        </Method>
+        <Method name="isSintonizadorTDT" returnType="boolean" visibility="public"/>
+        <Method name="setSintonizadorTDT" returnType="void" visibility="public">
+          <Argument type="boolean" name="sintonizadorTDT"/>
+        </Method>
+        <Method name="precioFinal" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="ejercicio2.Lavadora" target="ejercicio2.Electrodomestico"/>
+    <IsRelation name="is" source="ejercicio2.Televisor" target="ejercicio2.Electrodomestico"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
