@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio2_CopiaEjercicio1ConHAshSet">
+  <ClassDiagramComponents>
+    <Class name="Cine" package="ejercicio2" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="proyecciones" type="HashSet&lt;Pelicula&gt;" visibility="private"/>
+        <Field name="listaSet" type="ArrayList&lt;Pelicula&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="agregarPelicula" returnType="void" visibility="public">
+          <Argument type="Pelicula" name="newMovie"/>
+        </Method>
+        <Method name="listarTodo" returnType="void" visibility="public"/>
+        <Method name="listarDuranMas" returnType="void" visibility="public">
+          <Argument type="int" name="minutos"/>
+        </Method>
+        <Method name="listarMenorDuracionAMayorDuracion" returnType="void" visibility="public"/>
+        <Method name="listarOrdenadasPorTituloAZ" returnType="void" visibility="public"/>
+        <Method name="listarOrdenadasPorDirectorAZ" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pelicula" package="ejercicio2" visibility="public" xPosition="383.0" yPosition="30.0">
+      <Fields>
+        <Field name="titulo" type="String" visibility="private"/>
+        <Field name="director" type="String" visibility="private"/>
+        <Field name="duracion" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="String" name="director"/>
+          <Argument type="int" name="duracion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTitulo" returnType="String" visibility="public"/>
+        <Method name="getDirector" returnType="String" visibility="public"/>
+        <Method name="getDuracion" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Test" package="ejercicio2" visibility="public" xPosition="145.0" yPosition="384.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="ejercicio2.Cine" target="ejercicio2.Pelicula" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="proyecciones" source="ejercicio2.Cine" target="ejercicio2.Pelicula" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashSet&lt;Pelicula&gt;"/>
+    <HasRelation name="listaSet" source="ejercicio2.Cine" target="ejercicio2.Pelicula" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pelicula&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

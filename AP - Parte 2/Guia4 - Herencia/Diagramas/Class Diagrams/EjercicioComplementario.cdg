@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EjercicioComplementario">
+  <ClassDiagramComponents>
+    <Class name="Empresa" package="ejerciciocomplementario" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="contador" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="contratar" returnType="void" visibility="public">
+          <Argument type="Servicio" name="servicio"/>
+        </Method>
+        <Method name="mostrarCostoTotalDeObras" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ProgramaPrueba" package="ejerciciocomplementario" visibility="public" xPosition="20.0" yPosition="207.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RevisionAlarma" package="ejerciciocomplementario" visibility="public" xPosition="227.0" yPosition="394.0">
+      <Fields>
+        <Field name="numAlarmas" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numAlarmas"/>
+          <Argument type="String" name="trabajador"/>
+          <Argument type="LocalDate" name="fechaInicio"/>
+          <Argument type="String" name="cliente"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAlarmas" returnType="int" visibility="public"/>
+        <Method name="setAlarmas" returnType="void" visibility="public">
+          <Argument type="int" name="alarmas"/>
+        </Method>
+        <Method name="costeMaterial" returnType="double" visibility="public"/>
+        <Method name="costeManoObra" returnType="double" visibility="public"/>
+        <Method name="costeTotal" returnType="double" visibility="public"/>
+        <Method name="detalleServicio" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Servicio" package="ejerciciocomplementario" visibility="public" isAbstract="true" xPosition="296.0" yPosition="20.0">
+      <Fields>
+        <Field name="trabajador" type="String" visibility="protected"/>
+        <Field name="fechaInicio" type="LocalDate" visibility="protected"/>
+        <Field name="cliente" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="trabajador"/>
+          <Argument type="LocalDate" name="fechaInicio"/>
+          <Argument type="String" name="cliente"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getFechaInicio" returnType="LocalDate" visibility="public"/>
+        <Method name="setFechaInicio" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="fechaInicio"/>
+        </Method>
+        <Method name="getCliente" returnType="String" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="String" name="cliente"/>
+        </Method>
+        <Method name="costeMaterial" returnType="double" visibility="public" isAbstract="true"/>
+        <Method name="costeManoObra" returnType="double" visibility="public" isAbstract="true"/>
+        <Method name="costeTotal" returnType="double" visibility="public" isAbstract="true"/>
+        <Method name="detalleServicio" returnType="String" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="TrabajoPintura" package="ejerciciocomplementario" visibility="public" xPosition="741.0" yPosition="20.0">
+      <Fields>
+        <Field name="edificacion" type="String" visibility="private"/>
+        <Field name="superficie" type="double" visibility="private"/>
+        <Field name="precioPintura" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="trabajador"/>
+          <Argument type="LocalDate" name="fechaInicio"/>
+          <Argument type="String" name="cliente"/>
+          <Argument type="double" name="superficie"/>
+          <Argument type="double" name="precioPintura"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEdificacion" returnType="String" visibility="public"/>
+        <Method name="setEdificacion" returnType="void" visibility="public">
+          <Argument type="String" name="edificacion"/>
+        </Method>
+        <Method name="getSuperficie" returnType="double" visibility="public"/>
+        <Method name="setSuperficie" returnType="void" visibility="public">
+          <Argument type="double" name="superficie"/>
+        </Method>
+        <Method name="getPrecioPintura" returnType="double" visibility="public"/>
+        <Method name="setPrecioPintura" returnType="void" visibility="public">
+          <Argument type="double" name="precioPintura"/>
+        </Method>
+        <Method name="costeMaterial" returnType="double" visibility="public"/>
+        <Method name="costeManoObra" returnType="double" visibility="public"/>
+        <Method name="costeTotal" returnType="double" visibility="public"/>
+        <Method name="detalleServicio" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="ejerciciocomplementario.RevisionAlarma" target="ejerciciocomplementario.Servicio"/>
+    <IsRelation name="is" source="ejerciciocomplementario.TrabajoPintura" target="ejerciciocomplementario.Servicio"/>
+    <UseRelation source="ejerciciocomplementario.Empresa" target="ejerciciocomplementario.Servicio" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

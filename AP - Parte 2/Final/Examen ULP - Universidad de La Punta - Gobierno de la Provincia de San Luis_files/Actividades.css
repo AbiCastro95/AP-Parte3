@@ -1,0 +1,366 @@
+﻿p.TituloActividad {
+	color:#606060;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1.5rem;
+	font-weight:bold;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+div.ImagenActividad {
+	display:block;
+	width:100%;
+	margin-bottom:10px;
+	max-width:600px;
+}
+p.ResumenActividad {
+	text-align:justify;
+}
+table.Reporte {
+	border-spacing:0px;
+	border-right:1px solid #ae160e;
+	border-bottom:1px solid #ae160e;
+	border-collapse: collapse;
+}
+table.Reporte th {
+	background-color:#ae160e;
+	padding-top:5px;	
+	padding-bottom:5px;
+	padding-left:10px;
+	padding-right:10px;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1rem;
+	border-left:1px solid #ae160e;
+	border-top:1px solid #ae160e;
+	color:#ffffff;
+}
+table.Reporte td {
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1rem;
+	color: #606060;
+	border-left:1px solid #ae160e;
+	border-top:1px solid #ae160e;
+	padding-top:4px;	
+	padding-bottom:4px;
+	padding-left:5px;
+	padding-right:5px;
+}
+table.Reporte td .Boton {
+	padding-top:2px;
+	padding-bottom:2px;
+}
+td.tdRight
+{
+	text-align:right;
+	padding-right:10px;
+}
+td.tdCenter
+{
+	text-align:center;
+}
+tr.Destacado {
+}
+tr.Destacado td {
+	font-weight:bold;
+}
+/*Trivias*/
+div.divPreguntaOpciones {
+	max-width:600px;
+	width:100%;
+	margin-bottom:15px;
+}
+div.DobleEntrada {
+	max-width:inherit!important;
+}
+
+
+video.VideoActividad {
+	width:100%;
+	background-color:#ffffff!important;
+	margin-bottom:10px;
+	max-width:600px;
+    display:block;
+}
+p.PreguntaTrivia {
+	color:#606060;
+	font-size:1.4rem;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-bottom:1rem;
+}
+div.divResultadoCorrecto {
+	color:#ffffff;
+	background-color:#6BBE45;
+    padding-left:0.5em;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    padding-right:0.5em;       
+	border-left: 1px solid #6BBE45;
+	border-top: 1px solid #6BBE45;
+	border-bottom: 1px solid #6BBE45;
+	border-right: 1px solid #6BBE45;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+	width:20px; 
+	text-align:center;
+}
+div.divResultadoIncorrecto {
+	color:#ffffff;
+	background-color:#ff0000;
+    padding-left:0.5em;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    padding-right:0.5em;       
+	border-left: 1px solid #ff0000;
+	border-top: 1px solid #ff0000;
+	border-bottom: 1px solid #ff0000;
+	border-right: 1px solid #ff0000;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+	width:20px;
+	text-align:center;
+}
+div.divResultado {
+	color:#514F50;
+	background-color:#ffffff;
+    padding-left:0.5em;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    padding-right:0.5em;       
+	border-left: 1px solid #514F50;
+	border-top: 1px solid #514F50;
+	border-bottom: 1px solid #514F50;
+	border-right: 1px solid #514F50;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+	width:20px;
+	text-align:center;      
+}
+label.BotonRadio
+{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	border-left: 1px solid #ae160e;
+	border-top: 1px solid #ae160e;
+	border-bottom: 1px solid #ae160e;
+	border-right: 1px solid #ae160e;
+	background:none;
+	color:#013C77;
+	font-size:1rem;
+}
+div.ContenedorOpcion
+{
+    display:block;
+    margin-bottom: 0.5rem;
+	width:95%;
+}
+div.ContenedorRadio
+{
+    display:inline-block;
+    margin-right: 1rem;
+	vertical-align:top;
+}
+div.ContenedorActividadRadio
+{
+    display:inline-block;
+    padding-bottom: 0.5rem;
+    padding-top: 0.2rem;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1rem;
+	color: #606060;
+	vertical-align:top;
+	width:calc(100% - 100px);
+}
+div.ContenedorActividadRadioImg
+{
+    display:inline-block;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1rem;
+	color: #606060;
+	vertical-align:top;
+	width:calc(100% - 80px);
+}
+div.ContenedorActividadRadioImg img
+{
+ 	vertical-align:top;
+    width:100%;
+    height:auto;
+    max-width:350px;
+}
+div.ContenedorTextoActividadRadio {
+	display:inline-block;
+	vertical-align:top;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1rem;
+	color: #606060;
+	margin-left:10px;
+	width:100%;
+}
+a.lnkCapacitacion {
+	text-decoration:none;
+}
+ul.ulCategoria {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+li.liActividad {
+	margin-top:6px;
+	margin-bottom:0px;
+	color:#606060;
+}
+div.VideoNav {
+	width:180px;
+	display:inline-block;
+	margin-right:5px;
+	position:relative;
+}
+div.VideoNavTitulo {
+	width:calc(100% - 5px);
+	position:absolute;
+	left:0px;
+	top:0px;
+	color:#ffffff;
+	display:block;
+	background-color:#000000;
+	opacity:0.7;
+	padding-top:2px;
+	padding-bottom:2px;
+	padding-left:2px;
+	padding-right:2px;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:0.80rem;
+}
+div.VideoShow {
+	width:100%;
+	text-align:center;
+	align-content: center;
+	display:block;
+	vertical-align:top;
+	font-size:0px;
+	margin-bottom:10px;
+	max-width:600px;
+}
+.ifrmVideoProp{
+	width:100%;
+	height:350px;
+	vertical-align:top;
+}
+img.ImgPreguntaTrivia {
+	max-width:100%;
+	height:auto;
+	display:block;
+	margin-bottom:15px;
+}
+
+table.tblDobleEntrada {
+	border-spacing:0px;
+	border-right:1px solid #ae160e;
+	border-bottom:1px solid #ae160e;
+	border-collapse: collapse;
+}
+table.tblDobleEntrada th {
+	background-color:#ae160e;
+	padding-top:5px;	
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:0.7rem;
+	border-left:1px solid #ffffff;
+	border-top:1px solid #ae160e;
+	color:#ffffff;
+}
+table.tblDobleEntrada th:first-child {
+	border-left:1px solid #ae160e;
+}
+table.tblDobleEntrada td {
+	font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:1.2rem;
+	color: #ae160e;
+	border-left:1px solid #ae160e;
+	border-top:1px solid #ae160e;
+	padding-top:4px;	
+	padding-bottom:4px;
+	padding-left:5px;
+	padding-right:5px;
+    text-align:center;
+    vertical-align:middle;
+    cursor:pointer;
+    background-color:#ffffff;
+}
+table.tblDobleEntrada td:first-child {
+	font-size:0.8rem;
+	color: #606060;
+    text-align:left;
+    vertical-align:top;
+    cursor:auto;
+    background-color:#fffff0;
+}
+div.divResultado {
+	color:#514F50;
+	background-color:#ffffff;
+    padding-left:0.5em;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    padding-right:0.5em;       
+	border-left: 1px solid #514F50;
+	border-top: 1px solid #514F50;
+	border-bottom: 1px solid #514F50;
+	border-right: 1px solid #514F50;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+	width:20px;
+	text-align:center;      
+}
+div.divResultadoElegido {
+	color:#ffffff;
+	background-color:#da5e19;
+    padding-left:0.5em;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    padding-right:0.5em;       
+	border-left: 1px solid #da5e19;
+	border-top: 1px solid #da5e19;
+	border-bottom: 1px solid #da5e19;
+	border-right: 1px solid #da5e19;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+	width:20px;
+	text-align:center;      
+}
+
+@media screen and (max-width: 1500px) {
+	div.ImagenActividad {
+		max-width:800px;
+	}
+	div.VideoShow {
+		max-width:800px;
+	}
+	video.VideoActividad {
+		max-width:800px;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.ifrmVideoActividadProp {
+		height:300px;
+	}
+}
+@media screen and (max-width: 800px) {
+	div.VideoActividadShow {
+		width:100%;
+	}
+	video.VideoActividad {
+		width:100%;
+		max-width:none;
+	}
+}

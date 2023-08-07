@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Guia5Extras1">
+  <ClassDiagramComponents>
+    <Class name="Pila" package="" visibility="public" xPosition="159.0" yPosition="64.0">
+      <Fields>
+        <Field name="tope" type="Int" visibility="private"/>
+        <Field name="elementos" type="String[]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="tamanio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getterySetter" returnType="void" visibility="public"/>
+        <Method name="agregar" returnType="void" visibility="public">
+          <Argument type="String" name="elementos"/>
+        </Method>
+        <Method name="verTope" returnType="String" visibility="public"/>
+        <Method name="quitar" returnType="String" visibility="public"/>
+        <Method name="pilaVacia" returnType="boolean" visibility="public"/>
+        <Method name="pilaLlena" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

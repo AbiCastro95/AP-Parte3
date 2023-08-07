@@ -1,0 +1,388 @@
+﻿function ImgOn(oImg) {
+    oImg.src = oImg.src.replace("Off", "On");
+}
+function ImgOff(oImg) {
+    oImg.src = oImg.src.replace("On", "Off");
+}
+function autoHeight(Elementos, ElementoAjuste) {
+    var alto;
+    var altoElementos = 0;
+    var i;
+    $(ElementoAjuste).css('min-height', 0);
+    for (i = 0; i < Elementos.length; i++)
+        altoElementos += $(Elementos[i]).height();
+    alto = $(document).height() - altoElementos;
+    if (alto > 0) {
+        $(ElementoAjuste).css('min-height', alto);
+    }
+}
+function ObtenerSelectText(pSelect) {
+    return pSelect.options[pSelect.selectedIndex].text;
+}
+function RepetirString(Caracter, Largo) {
+    var strAux = "";
+    for (i = 0; i < Largo; i++)
+        strAux += Caracter;
+    return strAux;
+}
+
+    function PadLeft(Valor, Largo, Caracter) {
+        var strAux;
+        strAux = RepetirString("0", Largo) + Valor;
+
+        return strAux.substring(strAux.length - Largo);
+    }
+
+    function DateToString(pDate) {
+        return PadLeft(pDate.getDate(), 2, "0") + "/" + PadLeft(pDate.getMonth() + 1, 2, "0") + "/" + pDate.getFullYear();
+    }
+
+    function DateToIso(pDate) {
+        return pDate.getFullYear() * 10000 + (pDate.getMonth() + 1) * 100 + pDate.getDate();
+    }
+
+    function DateTimeToString(pDate) {
+        return PadLeft(pDate.getDate(), 2, "0") + "/" + PadLeft(pDate.getMonth() + 1, 2, "0") + "/" + pDate.getFullYear() + ' ' + PadLeft(pDate.getHours(), 2, "0") + ':' + PadLeft(pDate.getMinutes(), 2, "0");
+    }
+
+    function SpanishDateToDate(pTxtDate) {
+        var vDate;
+        vDate = pTxtDate.split("/");
+        if (vDate.length == 3) {
+            return new Date(parseInt(vDate[2], 10), parseInt(vDate[1], 10) - 1, parseInt(vDate[0], 10));
+        }
+    }
+
+    function CalculaEdad(pNacimiento, pFecha) {
+        var mAnios;
+        var mIntCumple;
+        var mIntFecha;
+
+        mAnios = pFecha.getFullYear() - pNacimiento.getFullYear();
+        mIntCumple = pFecha.getFullYear() * 10000 + (pNacimiento.getMonth() + 1) * 100 + pNacimiento.getDate();
+        mIntFecha = pFecha.getFullYear() * 10000 + (pFecha.getMonth() + 1) * 100 + pFecha.getDate();
+
+        if (mIntCumple > mIntFecha)
+            mAnios -= 1;
+
+        return mAnios;
+
+    }
+
+    var G_CodigoAreaVerificada = "";
+    function ValidarCampos(vCampos,tEstiloOk,tEstiloErr) {
+        var i;
+        var oCampo;
+        var j;
+        var iNombreCampo = 0;
+        var iCaptionCampo = 1;
+        var iValidacion = 2;
+        var iValidacionCustom = 3;
+
+        for (i = 0; i < vCampos.length; i++) {
+            if (vCampos[i][iNombreCampo].constructor === Array)
+                oCampo = $("[id$=" + vCampos[i][iNombreCampo][0] + "]");
+            else {
+                oCampo = $("[id$=" + vCampos[i][iNombreCampo] + "]");
+                if (vCampos[i][iNombreCampo] != "Captcha") {
+                    oCampo.removeClass(tEstiloErr);
+                    oCampo.addClass(tEstiloOk);
+                }
+            }
+            if (!oCampo[0].disabled) {
+                //Valida que el campo tenga un valor
+                if (vCampos[i][iValidacion].indexOf("O") > -1) { 
+                    if (SoloEspacios(oCampo.val())) {
+                        alertJQuery("Debe completar el campo " + vCampos[i][iCaptionCampo], function () {
+                            oCampo.removeClass(tEstiloOk);
+                            oCampo.addClass(tEstiloErr);
+                            oCampo.focus();
+                        });
+                        return false;
+                    }
+                }
+                //Valida que el campo solo tenga numeros
+                if (vCampos[i][iValidacion].indexOf("N") > -1) {
+                    if (!SoloNumeros(oCampo.val())) {
+                        alertJQuery("El campo " + vCampos[i][iCaptionCampo] + " solo puede contener números",function () {
+                            oCampo.removeClass(tEstiloOk);
+                            oCampo.addClass(tEstiloErr);
+                            oCampo.focus();
+                        });
+                        return false;
+                    }
+                }
+                //Valida que que por lo menos un checbox esté elegido
+                if (vCampos[i][iValidacion].indexOf("C") > -1) {
+                    if (!CheckboxElegidos(vCampos[i][iNombreCampo])) {
+                        alertJQuery("Se debe completar el campo " + vCampos[i][iCaptionCampo],function () {
+                            oCampo.focus();
+                        });
+                        return false;
+                    }
+                }
+
+                //Valida un teléfono de argentina
+                if (vCampos[i][iValidacion].indexOf("T") > -1) {
+                    oCampo2 = $("[id$=" + vCampos[i][iNombreCampo][1] + "]");
+                    oCampo2.removeClass(tEstiloErr);
+                    oCampo2.addClass(tEstiloOk);
+                    oCampo.removeClass(tEstiloErr);
+                    oCampo.addClass(tEstiloOk);
+                    if (oCampo.val().length + oCampo2.val().length > 0) {
+                        if (oCampo.val().length + oCampo2.val().length != 10) {
+                            alertJQuery("El número de teléfono completo (area + número) debe tener 10 dígitos para el campo " + vCampos[i][iCaptionCampo], function () {
+                                oCampo.removeClass(tEstiloOk);
+                                oCampo.addClass(tEstiloErr);
+                                oCampo2.removeClass(tEstiloOk);
+                                oCampo2.addClass(tEstiloErr);
+                                oCampo.focus();
+                            });
+                            return false;
+                        }
+                        if (oCampo[0].G_CodigoAreaVerificada != oCampo.val()) {
+                            oCampo[0].G_CodigoAreaVerificada = oCampo.val();
+                            if (!ValidaAreaTelefonoAR(oCampo.val())) {
+                                alertJQuery("El código de area no se encuentra en nuestra lista de códigos de area, si el código ingresado es el correcto, reintente la operación y será aceptado.", function () {
+                                    oCampo.removeClass(tEstiloOk);
+                                    oCampo.addClass(tEstiloErr);
+                                    oCampo.focus();
+                                });
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+                //Valida que el select tenga una opción elegida mayor a la primera
+                if (vCampos[i][iValidacion].indexOf("S") > -1) {
+                    if (oCampo[0].selectedIndex==0) {
+                        alertJQuery("Se debe completar el campo " + vCampos[i][iCaptionCampo],function () {
+                            oCampo.focus();
+                        });
+                        return false;
+                    }
+                }
+                //Valida que el mail tenga un formato correcto
+                if (vCampos[i][iValidacion].indexOf("M") > -1) {
+                    if (!ValidarEmail(oCampo.val())) {
+                        alertJQuery("El mail en el campo " + vCampos[i][iCaptionCampo] + " tiene un formato incorrecto.",function () {
+                            oCampo.removeClass(tEstiloOk);
+                            oCampo.addClass(tEstiloErr);
+                            oCampo.focus();
+                        });
+                        return false;
+                    }
+                }
+                //Validacion Custom, se envía el nombre del campo a una función
+                if (vCampos[i][iValidacionCustom]) { 
+                    if (!vCampos[i][iValidacionCustom](vCampos[i][iNombreCampo], vCampos[i][iCaptionCampo])) {
+                        if (vCampos[i][iNombreCampo] != "Captcha") {
+                            oCampo.removeClass(tEstiloOk);
+                            oCampo.addClass(tEstiloErr);
+                            oCampo.focus();
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+
+    function SoloEspacios(tTexto) {
+        var i;
+        var c;
+        for (i = 0; i < tTexto.length; i++) {
+            c = tTexto.substring(i, i + 1);
+            if ((escape(c) != '%0D') || (escape(c) != '%0A'))
+                if (c != " ")
+                    return false;
+        }
+        return true
+    }
+
+    function DivOnOff(tImg, tDiv,tUrlOpen,tUrlClosed) {
+        var objDiv;
+        var objImg;
+
+        var ImgOpen = new Image();
+        var ImgClose = new Image();
+        ImgOpen.src = tUrlOpen;
+        ImgClose.src = tUrlClosed;
+
+        objDiv = document.getElementById(tDiv);
+        objImg = document.images[tImg];
+        if (objDiv.style.display == 'none') {
+            objDiv.style.display = '';
+            objImg.src = ImgOpen.src;
+        }
+        else {
+            objDiv.style.display = 'none';
+            objImg.src = ImgClose.src;
+        }
+
+    }
+
+    function ValidarEmail(tEmail) {
+        var badChar = /[áéíóúÁÉÍÓÚñÑ]/;
+        if (badChar.test(tEmail))
+            return false;
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(tEmail);
+    }
+
+    function MostrarMensajePopUpABM(pMensaje) {
+        var options = {};
+        $("#MensajeOKABM").html("<p>" + pMensaje + "</p>");
+        $("#MensajeOKABM").show("drop", options, 300, OcultarMensajePopUpABM);
+    }
+
+    function OcultarMensajePopUpABM() {
+        setTimeout(function () {
+            $("#MensajeOKABM:visible").removeAttr("style").fadeOut();
+        }, 1000);
+    }
+
+    function SoloNumeros(vNum) {
+        var sAux;
+        var iCant;
+        var i;
+        var c;
+
+        sAux = sTrim(vNum);
+        iCant = sAux.length;
+        for (i = 0; i < iCant; i++) {
+            c = sAux.substring(i, i + 1);
+            if (c < "0" || c > "9")
+                return false;
+        }
+        return true;
+    }
+
+    function CheckboxElegidos(vCampos) {
+        var i;
+        var oCampo;
+        for (i = 0; i < vCampos.length; i++) {
+            oCampo = $("[id$=" + vCampos[i] + "]");
+            if (oCampo[0].checked)
+                return true;
+        }
+        return false;
+    }
+
+    function sTrim(tTxt) {
+        var tAuxL = "";
+        var tAuxR = "";
+        var i;
+        var c;
+        var iCant;
+        iCant = tTxt.length;
+        i = 0;
+        while (i < iCant) {
+            if (tTxt.substr(i, 1) != " ")
+                break;
+            i++
+        }
+        while (i < iCant) {
+            tAuxL = tAuxL + tTxt.substr(i, 1)
+            i++
+        }
+        iCant = tAuxL.length;
+        i = iCant - 1;
+        while (i >= 0) {
+            if (tAuxL.substr(i, 1) != " ")
+                break;
+            i--
+        }
+        while (i >= 0) {
+            tAuxR = tAuxL.substr(i, 1) + tAuxR;
+            i--
+        }
+        return tAuxR;
+
+    }
+    function ObtenerCampoForm(tCampo) {
+        return $("[id$=" + tCampo + "]")[0];
+    }
+    function ObtenerCampo(tCampo) {
+        return $("[id$=" + tCampo + "]");
+    }
+
+    function alertJQuery(tMensaje, fAccion)
+    {
+        $("#dialog-message").attr("title", "Aviso");
+        $("#dialog-message #Mensaje").html(tMensaje);
+        $("#dialog-message").dialog({
+            modal: true,
+            buttons: {
+                Aceptar: function () {
+                    $(this).dialog("close");
+                    if (fAccion)
+                        fAccion();
+                }
+            }
+        });
+    }
+
+    function ValidaAreaTelefonoAR(pArea) {
+        var vCaracteristica = [[[11], [11]], [[220], [221]], [[223], [223]], [[230], [230]], [[236], [237]], [[249], [249]], [[260], [261]], [[263], [264]], [[266], [266]], [[280], [280]],
+                            [[291], [291]], [[294], [294]], [[297], [299]], [[336], [336]], [[341], [343]], [[345], [345]], [[348], [348]], [[351], [351]], [[353], [353]], [[358], [358]],
+                            [[362], [362]], [[364], [364]], [[370], [370]], [[376], [376]], [[379], [381]], [[383], [383]], [[385], [385]], [[387], [388]], [[2202], [2202]], [[2221], [2221]],
+                            [[2223], [2227]], [[2229], [2229]], [[2241], [2246]], [[2252], [2252]], [[2254], [2255]], [[2257], [2257]], [[2261], [2262]], [[2264], [2268]], [[2271], [2274]],
+                            [[2281], [2281]], [[2283], [2286]], [[2291], [2292]], [[2296], [2297]], [[2302], [2302]], [[2314], [2314]], [[2316], [2317]], [[2320], [2320]], [[2323], [2326]],
+                            [[2331], [2331]], [[2333], [2338]], [[2342], [2346]], [[2352], [2358]], [[2392], [2396]], [[2473], [2475]], [[2477], [2478]], [[2622], [2622]], [[2624], [2626]],
+                            [[2646], [2648]], [[2651], [2652]], [[2655], [2658]], [[2901], [2903]], [[2920], [2929]], [[2931], [2936]], [[2940], [2940]], [[2942], [2942]], [[2945], [2946]],
+                            [[2948], [2948]], [[2952], [2954]], [[2962], [2964]], [[2966], [2966]], [[2972], [2972]], [[2982], [2983]], [[3327], [3327]], [[3329], [3329]], [[3382], [3382]],
+                            [[3385], [3385]], [[3387], [3388]], [[3400], [3402]], [[3404], [3409]], [[3435], [3438]], [[3442], [3442]], [[3444], [3447]], [[3454], [3456]], [[3458], [3458]],
+                            [[3460], [3460]], [[3462], [3469]], [[3471], [3472]], [[3476], [3476]], [[3482], [3483]], [[3487], [3487]], [[3489], [3489]], [[3491], [3493]], [[3496], [3498]],
+                            [[3521], [3522]], [[3524], [3525]], [[3532], [3533]], [[3537], [3537]], [[3541], [3544]], [[3546], [3549]], [[3562], [3564]], [[3571], [3576]], [[3582], [3585]],
+                            [[3711], [3711]], [[3715], [3716]], [[3718], [3718]], [[3721], [3721]], [[3725], [3725]], [[3731], [3731]], [[3734], [3735]], [[3741], [3741]], [[3743], [3743]],
+                            [[3751], [3751]], [[3754], [3758]], [[3772], [3775]], [[3777], [3777]], [[3781], [3782]], [[3786], [3786]], [[3821], [3821]], [[3825], [3827]], [[3832], [3832]],
+                            [[3835], [3835]], [[3837], [3838]], [[3841], [3841]], [[3843], [3846]], [[3854], [3858]], [[3861], [3863]], [[3865], [3865]], [[3867], [3869]], [[3873], [3873]],
+                            [[3876], [3878]], [[3885], [3888]], [[3891], [3892]], [[3894], [3894]]];
+        var mArea;
+        var i;
+        mArea = parseInt(pArea,10);
+        for (i = 0; i < vCaracteristica.length; i++)
+            if (mArea >= vCaracteristica[i][0] && mArea <= vCaracteristica[i][1])
+                return true;
+        return false;
+    }
+
+
+    function SiNoJQuery(tTitulo, tMensaje, fConfirm, fNoConfirm)
+    {
+        var fConfirmInt;
+        var fNoConfirmInt;
+
+        if (fNoConfirm) {
+            fNoConfirmInt = function () {
+                $(this).dialog("close");
+                fNoConfirm();
+            }
+        }
+        else
+            fNoConfirmInt = function () { $(this).dialog("close"); }
+
+        if (fConfirm) {
+            fConfirmInt = function () {
+                $(this).dialog("close");
+                fConfirm();
+            }
+        }
+        else
+            fConfirmInt = function () { $(this).dialog("close"); }
+
+
+        $("#dialog-message").attr("title", tTitulo);
+        $("#dialog-message #Mensaje").html(tMensaje);
+        $("#dialog-message").dialog({
+            modal: true,
+            buttons: {
+                Si: fConfirmInt,
+                No: fNoConfirmInt
+            }
+        });
+    }
