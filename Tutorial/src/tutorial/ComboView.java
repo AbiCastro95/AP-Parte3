@@ -5,11 +5,22 @@
  */
 package tutorial;
 
+import java.awt.Dimension;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Abigail
  */
 public class ComboView extends javax.swing.JFrame {
+    //Creo una clase anónima que va a sobreescribir la que ya existe en DefaulTableModel
+    private DefaultTableModel modelo = new DefaultTableModel(){
+        public boolean isCellEditable(int fila, int columna){
+            return false; 
+        }
+    };
 
     /**
      * Creates new form ComboAlumnos
@@ -17,6 +28,8 @@ public class ComboView extends javax.swing.JFrame {
     public ComboView() {
         initComponents();
         cargarCombo();
+        armarCabecera();
+        cargarDatosArray();
     }
 
     /**
@@ -31,30 +44,38 @@ public class ComboView extends javax.swing.JFrame {
         jPCarga = new javax.swing.JPanel();
         jLTitleLoad = new javax.swing.JLabel();
         jLMatriculaCarga = new javax.swing.JLabel();
+        jTMatriculaCarga = new javax.swing.JTextField();
         jNombreCarga = new javax.swing.JLabel();
+        jTNombreCarga = new javax.swing.JTextField();
         jLApellidoCarga = new javax.swing.JLabel();
         jTApellidoCarga = new javax.swing.JTextField();
-        jTNombreCarga = new javax.swing.JTextField();
-        jTMatriculaCarga = new javax.swing.JTextField();
         jBCargar = new javax.swing.JButton();
-        jBLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTAlumnos = new javax.swing.JTable();
         jBEliminar = new javax.swing.JButton();
         jPBuscador = new javax.swing.JPanel();
         jLTitleSearch = new javax.swing.JLabel();
         jCBAlumnos = new javax.swing.JComboBox<>();
         jLMatricula = new javax.swing.JLabel();
         jTextoMatricula = new javax.swing.JTextField();
-        jNombre = new javax.swing.JLabel();
+        jLNombre = new javax.swing.JLabel();
         jTextoNombre = new javax.swing.JTextField();
         jLApellido = new javax.swing.JLabel();
         jTextoApellido = new javax.swing.JTextField();
+        jLTitleSearchTable = new javax.swing.JLabel();
+        jLMatriculaT = new javax.swing.JLabel();
+        jTMTabla = new javax.swing.JTextField();
+        jLNombreT = new javax.swing.JLabel();
+        jTNTabla = new javax.swing.JTextField();
+        jLApellidoT = new javax.swing.JLabel();
+        jTATabla = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Busqueda de Alumnos");
-        setBackground(new java.awt.Color(51, 0, 51));
-        setPreferredSize(new java.awt.Dimension(400, 600));
+        setBackground(new java.awt.Color(51, 51, 51));
+        setMinimumSize(new java.awt.Dimension(750, 450));
+        setPreferredSize(new java.awt.Dimension(450, 750));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPCarga.setBackground(new java.awt.Color(51, 51, 51));
         jPCarga.setForeground(new java.awt.Color(102, 102, 102));
@@ -71,9 +92,31 @@ public class ComboView extends javax.swing.JFrame {
         jLMatriculaCarga.setForeground(new java.awt.Color(153, 153, 153));
         jLMatriculaCarga.setText("N° MATRICULA");
 
+        jTMatriculaCarga.setForeground(new java.awt.Color(51, 51, 51));
+        jTMatriculaCarga.setCaretColor(new java.awt.Color(102, 102, 102));
+        jTMatriculaCarga.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        jTMatriculaCarga.setSelectedTextColor(new java.awt.Color(204, 204, 255));
+        jTMatriculaCarga.setSelectionColor(new java.awt.Color(153, 153, 255));
+        jTMatriculaCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTMatriculaCargaActionPerformed(evt);
+            }
+        });
+
         jNombreCarga.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jNombreCarga.setForeground(new java.awt.Color(153, 153, 153));
         jNombreCarga.setText("NOMBRE");
+
+        jTNombreCarga.setForeground(new java.awt.Color(51, 51, 51));
+        jTNombreCarga.setCaretColor(new java.awt.Color(102, 102, 102));
+        jTNombreCarga.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        jTNombreCarga.setSelectedTextColor(new java.awt.Color(204, 204, 255));
+        jTNombreCarga.setSelectionColor(new java.awt.Color(153, 153, 255));
+        jTNombreCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTNombreCargaActionPerformed(evt);
+            }
+        });
 
         jLApellidoCarga.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLApellidoCarga.setForeground(new java.awt.Color(153, 153, 153));
@@ -90,28 +133,6 @@ public class ComboView extends javax.swing.JFrame {
             }
         });
 
-        jTNombreCarga.setForeground(new java.awt.Color(51, 51, 51));
-        jTNombreCarga.setCaretColor(new java.awt.Color(102, 102, 102));
-        jTNombreCarga.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        jTNombreCarga.setSelectedTextColor(new java.awt.Color(204, 204, 255));
-        jTNombreCarga.setSelectionColor(new java.awt.Color(153, 153, 255));
-        jTNombreCarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNombreCargaActionPerformed(evt);
-            }
-        });
-
-        jTMatriculaCarga.setForeground(new java.awt.Color(51, 51, 51));
-        jTMatriculaCarga.setCaretColor(new java.awt.Color(102, 102, 102));
-        jTMatriculaCarga.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        jTMatriculaCarga.setSelectedTextColor(new java.awt.Color(204, 204, 255));
-        jTMatriculaCarga.setSelectionColor(new java.awt.Color(153, 153, 255));
-        jTMatriculaCarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTMatriculaCargaActionPerformed(evt);
-            }
-        });
-
         jBCargar.setText("Cargar");
         jBCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,15 +140,8 @@ public class ComboView extends javax.swing.JFrame {
             }
         });
 
-        jBLimpiar.setText("Limpiar");
-        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBLimpiarActionPerformed(evt);
-            }
-        });
-
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTAlumnos.setAutoCreateRowSorter(true);
+        jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -152,9 +166,14 @@ public class ComboView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setSelectionBackground(new java.awt.Color(153, 153, 255));
-        jTable1.setSelectionForeground(new java.awt.Color(204, 204, 255));
-        jScrollPane1.setViewportView(jTable1);
+        jTAlumnos.setSelectionBackground(new java.awt.Color(153, 153, 255));
+        jTAlumnos.setSelectionForeground(new java.awt.Color(204, 204, 255));
+        jTAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTAlumnosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTAlumnos);
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -174,34 +193,30 @@ public class ComboView extends javax.swing.JFrame {
                             .addGroup(jPCargaLayout.createSequentialGroup()
                                 .addGap(70, 70, 70)
                                 .addComponent(jLTitleLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPCargaLayout.createSequentialGroup()
-                                    .addGap(22, 22, 22)
-                                    .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLMatriculaCarga)
-                                        .addGroup(jPCargaLayout.createSequentialGroup()
-                                            .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jNombreCarga)
-                                                .addComponent(jLApellidoCarga))
-                                            .addGap(33, 33, 33)))
-                                    .addGap(46, 46, 46)
-                                    .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTMatriculaCarga, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTNombreCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTApellidoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPCargaLayout.createSequentialGroup()
-                                    .addGap(171, 171, 171)
-                                    .addComponent(jBCargar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jBLimpiar))))
-                        .addGap(0, 26, Short.MAX_VALUE))
+                            .addGroup(jPCargaLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLMatriculaCarga)
+                                    .addGroup(jPCargaLayout.createSequentialGroup()
+                                        .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jNombreCarga)
+                                            .addComponent(jLApellidoCarga))
+                                        .addGap(33, 33, 33)))
+                                .addGap(46, 46, 46)
+                                .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTMatriculaCarga, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTNombreCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTApellidoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 50, Short.MAX_VALUE))
                     .addGroup(jPCargaLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCargaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBEliminar)))
+                        .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBEliminar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBCargar, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jPCargaLayout.setVerticalGroup(
@@ -222,15 +237,15 @@ public class ComboView extends javax.swing.JFrame {
                     .addComponent(jTApellidoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLApellidoCarga))
                 .addGap(18, 18, 18)
-                .addGroup(jPCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCargar)
-                    .addComponent(jBLimpiar))
+                .addComponent(jBCargar)
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBEliminar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPCarga);
 
         jPBuscador.setBackground(new java.awt.Color(51, 51, 51));
         jPBuscador.setForeground(new java.awt.Color(102, 102, 102));
@@ -266,9 +281,9 @@ public class ComboView extends javax.swing.JFrame {
             }
         });
 
-        jNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jNombre.setForeground(new java.awt.Color(153, 153, 153));
-        jNombre.setText("NOMBRE");
+        jLNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLNombre.setForeground(new java.awt.Color(153, 153, 153));
+        jLNombre.setText("NOMBRE");
 
         jTextoNombre.setEditable(false);
         jTextoNombre.setForeground(new java.awt.Color(51, 51, 51));
@@ -298,6 +313,61 @@ public class ComboView extends javax.swing.JFrame {
             }
         });
 
+        jLTitleSearchTable.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLTitleSearchTable.setForeground(new java.awt.Color(204, 204, 255));
+        jLTitleSearchTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLTitleSearchTable.setText("BUSCADOR DESDE TABLA");
+        jLTitleSearchTable.setPreferredSize(new java.awt.Dimension(250, 15));
+        jLTitleSearchTable.setRequestFocusEnabled(false);
+
+        jLMatriculaT.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLMatriculaT.setForeground(new java.awt.Color(153, 153, 153));
+        jLMatriculaT.setText("N° MATRICULA");
+
+        jTMTabla.setEditable(false);
+        jTMTabla.setForeground(new java.awt.Color(51, 51, 51));
+        jTMTabla.setCaretColor(new java.awt.Color(102, 102, 102));
+        jTMTabla.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        jTMTabla.setSelectedTextColor(new java.awt.Color(204, 204, 255));
+        jTMTabla.setSelectionColor(new java.awt.Color(153, 153, 255));
+        jTMTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTMTablaActionPerformed(evt);
+            }
+        });
+
+        jLNombreT.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLNombreT.setForeground(new java.awt.Color(153, 153, 153));
+        jLNombreT.setText("NOMBRE");
+
+        jTNTabla.setEditable(false);
+        jTNTabla.setForeground(new java.awt.Color(51, 51, 51));
+        jTNTabla.setCaretColor(new java.awt.Color(102, 102, 102));
+        jTNTabla.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        jTNTabla.setSelectedTextColor(new java.awt.Color(204, 204, 255));
+        jTNTabla.setSelectionColor(new java.awt.Color(153, 153, 255));
+        jTNTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTNTablaActionPerformed(evt);
+            }
+        });
+
+        jLApellidoT.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLApellidoT.setForeground(new java.awt.Color(153, 153, 153));
+        jLApellidoT.setText("APELLIDO");
+
+        jTATabla.setEditable(false);
+        jTATabla.setForeground(new java.awt.Color(51, 51, 51));
+        jTATabla.setCaretColor(new java.awt.Color(102, 102, 102));
+        jTATabla.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        jTATabla.setSelectedTextColor(new java.awt.Color(204, 204, 255));
+        jTATabla.setSelectionColor(new java.awt.Color(153, 153, 255));
+        jTATabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTATablaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPBuscadorLayout = new javax.swing.GroupLayout(jPBuscador);
         jPBuscador.setLayout(jPBuscadorLayout);
         jPBuscadorLayout.setHorizontalGroup(
@@ -312,19 +382,38 @@ public class ComboView extends javax.swing.JFrame {
                     .addGroup(jPBuscadorLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLMatricula)
                             .addGroup(jPBuscadorLayout.createSequentialGroup()
+                                .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLMatricula)
+                                    .addGroup(jPBuscadorLayout.createSequentialGroup()
+                                        .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLNombre)
+                                            .addComponent(jLApellido))
+                                        .addGap(33, 33, 33)))
+                                .addGap(46, 46, 46)
                                 .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jNombre)
-                                    .addComponent(jLApellido))
-                                .addGap(33, 33, 33)))
-                        .addGap(46, 46, 46)
-                        .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextoMatricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                                    .addComponent(jTextoMatricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPBuscadorLayout.createSequentialGroup()
+                                .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPBuscadorLayout.createSequentialGroup()
+                                        .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLNombreT)
+                                            .addComponent(jLApellidoT))
+                                        .addGap(33, 33, 33))
+                                    .addComponent(jLMatriculaT))
+                                .addGap(46, 46, 46)
+                                .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTATabla, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTNTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTMTabla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPBuscadorLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLTitleSearchTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPBuscadorLayout.setVerticalGroup(
             jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,36 +429,29 @@ public class ComboView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNombre))
+                    .addComponent(jLNombre))
                 .addGap(18, 18, 18)
                 .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLApellido))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLTitleSearchTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTMTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLMatriculaT))
+                .addGap(18, 18, 18)
+                .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTNTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLNombreT))
+                .addGap(18, 18, 18)
+                .addGroup(jPBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTATabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLApellidoT))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 167, Short.MAX_VALUE))
-                    .addComponent(jPCarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        getContentPane().add(jPBuscador);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -388,7 +470,10 @@ public class ComboView extends javax.swing.JFrame {
 
     private void jCBAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnosActionPerformed
         // TODO add your handling code here:
-        
+        Alumno seleccion = (Alumno) jCBAlumnos.getSelectedItem();
+        jTextoMatricula.setText(seleccion.getMatricula() + "");
+        jTextoNombre.setText(seleccion.getNombre());
+        jTextoApellido.setText(seleccion.getApellido());
     }//GEN-LAST:event_jCBAlumnosActionPerformed
 
     private void jTextoMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextoMatriculaActionPerformed
@@ -402,18 +487,73 @@ public class ComboView extends javax.swing.JFrame {
     private void jTextoApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextoApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextoApellidoActionPerformed
-
+    
     private void jBCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCargarActionPerformed
         // TODO add your handling code here:
+        try {
+            int matricula = Integer.parseInt(jTMatriculaCarga.getText()); //Si ocurre un error va al catch, sino va al if
+            if (jTNombreCarga.getText().isEmpty() || jTApellidoCarga.getText().isEmpty()) {
+                //Si encuentra un campo vacío manda el mensaje de error y sale del método, sino sigue
+                JOptionPane.showMessageDialog(this, "No debe haber campos vacíos.");
+                return;
+            }
+            //Tomo el nombre y el apellido y los guardo en una variable local
+            String nombre = jTNombreCarga.getText();
+            String apellido = jTApellidoCarga.getText();
+            //Creo el alumno y lo cargo
+            Alumno a = new Alumno(matricula, nombre, apellido);
+            cargarDatos(a);
+
+            //Limpio los campos
+            jTMatriculaCarga.setText("");
+            jTNombreCarga.setText("");
+            jTApellidoCarga.setText("");
+
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Formato inválido en el campo MATRICULA. Debe contener solo enteros.");
+        }
     }//GEN-LAST:event_jBCargarActionPerformed
-
-    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBLimpiarActionPerformed
-
+    
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // TODO add your handling code here:
+        int filaS = jTAlumnos.getSelectedRow();
+        if (filaS != -1) {
+            modelo.removeRow(filaS);
+            
+            jTMTabla.setText("");
+            jTNTabla.setText("");
+            jTATabla.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado la fila a eliminar.");
+        }
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jTATablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTATablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTATablaActionPerformed
+
+    private void jTNTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTNTablaActionPerformed
+
+    private void jTMTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTMTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTMTablaActionPerformed
+
+    private void jTAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTAlumnosMouseClicked
+        // TODO add your handling code here:
+        int filaS = jTAlumnos.getSelectedRow();
+        if (filaS != -1) {
+            int matricula = (Integer) jTAlumnos.getValueAt(filaS, 0);
+            String nombre = (String) jTAlumnos.getValueAt(filaS, 1);
+            String apellido = (String) jTAlumnos.getValueAt(filaS, 2);
+            
+            jTMTabla.setText(matricula + "");
+            jTNTabla.setText(nombre);
+            jTATabla.setText(apellido);
+        }
+        
+    }//GEN-LAST:event_jTAlumnosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -454,27 +594,61 @@ public class ComboView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCargar;
     private javax.swing.JButton jBEliminar;
-    private javax.swing.JButton jBLimpiar;
     private javax.swing.JComboBox<Alumno> jCBAlumnos;
     private javax.swing.JLabel jLApellido;
     private javax.swing.JLabel jLApellidoCarga;
+    private javax.swing.JLabel jLApellidoT;
     private javax.swing.JLabel jLMatricula;
     private javax.swing.JLabel jLMatriculaCarga;
+    private javax.swing.JLabel jLMatriculaT;
+    private javax.swing.JLabel jLNombre;
+    private javax.swing.JLabel jLNombreT;
     private javax.swing.JLabel jLTitleLoad;
     private javax.swing.JLabel jLTitleSearch;
-    private javax.swing.JLabel jNombre;
+    private javax.swing.JLabel jLTitleSearchTable;
     private javax.swing.JLabel jNombreCarga;
     private javax.swing.JPanel jPBuscador;
     private javax.swing.JPanel jPCarga;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTATabla;
+    private javax.swing.JTable jTAlumnos;
     private javax.swing.JTextField jTApellidoCarga;
+    private javax.swing.JTextField jTMTabla;
     private javax.swing.JTextField jTMatriculaCarga;
+    private javax.swing.JTextField jTNTabla;
     private javax.swing.JTextField jTNombreCarga;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextoApellido;
     private javax.swing.JTextField jTextoMatricula;
     private javax.swing.JTextField jTextoNombre;
     // End of variables declaration//GEN-END:variables
+
+    //Tutorial Carga
+    private void armarCabecera() {
+        modelo.addColumn("MATRICULA");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+
+        jTAlumnos.setModel(modelo);
+    }
+
+    private void cargarDatos(Alumno alumno) {
+        //Usamos un vector para cargar
+        modelo.addRow(new Object[]{alumno.getMatricula(), alumno.getNombre(), alumno.getApellido()});
+    }
+    
+    private void cargarDatosArray() {
+
+        ArrayList<Alumno> lista = new ArrayList<>();
+
+        lista.add(new Alumno(1122, "Will", "Shakespeare"));
+        lista.add(new Alumno(3344, "Jane", "Austen"));
+        lista.add(new Alumno(5566, "Juana", "De Arco"));
+        lista.add(new Alumno(9900, "Albert", "Einstein"));
+
+        for (Alumno alumno : lista) {
+            modelo.addRow(new Object[]{alumno.getMatricula(), alumno.getNombre(), alumno.getApellido()});
+        }
+    }
 
     //Tutorial Buscador
     private void cargarCombo() {
@@ -483,6 +657,5 @@ public class ComboView extends javax.swing.JFrame {
         jCBAlumnos.addItem(new Alumno(5566, "Juana", "De Arco"));
         jCBAlumnos.addItem(new Alumno(7788, "Napoleón", "Bonaparte"));
         jCBAlumnos.addItem(new Alumno(9900, "Albert", "Einstein"));
-    
     }
 }
