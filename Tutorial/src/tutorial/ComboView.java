@@ -657,5 +657,5 @@ public class ComboView extends javax.swing.JFrame {
         jCBAlumnos.addItem(new Alumno(5566, "Juana", "De Arco"));
         jCBAlumnos.addItem(new Alumno(7788, "Napoleón", "Bonaparte"));
         jCBAlumnos.addItem(new Alumno(9900, "Albert", "Einstein"));
-    }
+    }   
 }
