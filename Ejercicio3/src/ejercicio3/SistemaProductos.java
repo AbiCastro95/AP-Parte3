@@ -6,6 +6,7 @@
 package ejercicio3;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,15 +43,11 @@ public class SistemaProductos extends javax.swing.JFrame {
         jLExplicar = new javax.swing.JLabel();
         jCCategorias = new javax.swing.JComboBox<>();
         jBAgregar = new javax.swing.JButton();
-        jLNameProd = new javax.swing.JLabel();
-        jTNameProd = new javax.swing.JTextField();
-        jLPriceProd = new javax.swing.JLabel();
-        jTPriceProd = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProd = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         BackGround.setPreferredSize(new java.awt.Dimension(400, 300));
 
@@ -60,22 +57,10 @@ public class SistemaProductos extends javax.swing.JFrame {
 
         jLExplicar.setText("Seleccione la categoria y luego \"Agregar\"");
 
-        jCCategorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jBAgregar.setText("AGREGAR");
         jBAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAgregarActionPerformed(evt);
-            }
-        });
-
-        jLNameProd.setText("Nombre");
-
-        jLPriceProd.setText("Precio");
-
-        jTPriceProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTPriceProdActionPerformed(evt);
             }
         });
 
@@ -100,27 +85,18 @@ public class SistemaProductos extends javax.swing.JFrame {
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackGroundLayout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jCCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(jBAgregar))
                             .addGroup(BackGroundLayout.createSequentialGroup()
                                 .addGap(99, 99, 99)
                                 .addComponent(jLTitulo))
                             .addGroup(BackGroundLayout.createSequentialGroup()
                                 .addGap(80, 80, 80)
-                                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLExplicar)
-                                    .addGroup(BackGroundLayout.createSequentialGroup()
-                                        .addComponent(jCCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jBAgregar))))
-                            .addGroup(BackGroundLayout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLNameProd)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTNameProd, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLPriceProd)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTPriceProd, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 67, Short.MAX_VALUE))
+                                .addComponent(jLExplicar)))
+                        .addGap(0, 64, Short.MAX_VALUE))
                     .addGroup(BackGroundLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -137,15 +113,9 @@ public class SistemaProductos extends javax.swing.JFrame {
                 .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBAgregar))
-                .addGap(22, 22, 22)
-                .addGroup(BackGroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNameProd)
-                    .addComponent(jTNameProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLPriceProd)
-                    .addComponent(jTPriceProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(BackGround);
@@ -155,12 +125,18 @@ public class SistemaProductos extends javax.swing.JFrame {
 
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
         // TODO add your handling code here:
+        ArrayList<Producto> lista = new ArrayList<>();
         
+        String nombre = JOptionPane.showInputDialog("Nombre:");
+        float precio = Float.parseFloat(JOptionPane.showInputDialog("Precio:"));
+        String tipo = (String) jCCategorias.getSelectedItem();
+        
+        lista.add(new Producto(nombre, precio, tipo));
+        
+        for (Producto prod : lista) {
+            modelo.addRow(new Object[]{prod.getTipo(), prod.getNombre(), prod.getPrecio()});
+        }
     }//GEN-LAST:event_jBAgregarActionPerformed
-
-    private void jTPriceProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPriceProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTPriceProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,12 +178,8 @@ public class SistemaProductos extends javax.swing.JFrame {
     private javax.swing.JButton jBAgregar;
     private javax.swing.JComboBox<String> jCCategorias;
     private javax.swing.JLabel jLExplicar;
-    private javax.swing.JLabel jLNameProd;
-    private javax.swing.JLabel jLPriceProd;
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTNameProd;
-    private javax.swing.JTextField jTPriceProd;
     private javax.swing.JTable jTableProd;
     // End of variables declaration//GEN-END:variables
 
