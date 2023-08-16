@@ -7,6 +7,8 @@ package ejercicio3;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,11 +17,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SistemaProductos extends javax.swing.JFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel(){
-        public boolean isCellEditable(int fila, int columna){
-            return false; 
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
         }
     };
+
     /**
      * Creates new form SistemaProductos
      */
@@ -126,13 +129,13 @@ public class SistemaProductos extends javax.swing.JFrame {
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
         // TODO add your handling code here:
         ArrayList<Producto> lista = new ArrayList<>();
-        
+
         String nombre = JOptionPane.showInputDialog("Nombre:");
         float precio = Float.parseFloat(JOptionPane.showInputDialog("Precio:"));
         String tipo = (String) jCCategorias.getSelectedItem();
-        
+
         lista.add(new Producto(nombre, precio, tipo));
-        
+
         for (Producto prod : lista) {
             modelo.addRow(new Object[]{prod.getTipo(), prod.getNombre(), prod.getPrecio()});
         }
@@ -183,18 +186,21 @@ public class SistemaProductos extends javax.swing.JFrame {
     private javax.swing.JTable jTableProd;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarCategorias(){
+    private void cargarCategorias() {
         jCCategorias.addItem("Electrónica");
         jCCategorias.addItem("Bazar");
         jCCategorias.addItem("Indumentaria");
         jCCategorias.addItem("Alimentos");
     }
-    
+
     private void armarCabecera() {
         modelo.addColumn("CATEGORIA");
         modelo.addColumn("NOMBRE");
         modelo.addColumn("PRECIO");
 
         jTableProd.setModel(modelo);
+
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) jTableProd.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
     }
 }
