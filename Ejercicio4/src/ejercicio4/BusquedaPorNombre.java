@@ -109,7 +109,7 @@ public class BusquedaPorNombre extends javax.swing.JInternalFrame {
     private void jTNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyReleased
         //Detecta cuando ya no está pulsada la tecla
         eliminarFilas();
-        for (Producto prod : GestionProductos.listaProductos) {
+        for (Producto prod : GestionView.listaProductos) {
             if (prod.getDescripcion().startsWith(jTNombre.getText())) {
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),

@@ -11,15 +11,16 @@ import java.util.TreeSet;
  *
  * @author Abigail
  */
-public class GestionProductos extends javax.swing.JFrame {
+public class GestionView extends javax.swing.JFrame {
 
     public static TreeSet<Producto> listaProductos = new TreeSet<>();
 
     /**
      * Creates new form GestionProductos
      */
-    public GestionProductos() {
+    public GestionView() {
         initComponents();
+        cargarProd();
     }
 
     /**
@@ -65,6 +66,11 @@ public class GestionProductos extends javax.swing.JFrame {
         jMenuItemProductos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProductos.setText("Poductos");
         jMenuItemProductos.setPreferredSize(new java.awt.Dimension(117, 21));
+        jMenuItemProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProductosActionPerformed(evt);
+            }
+        });
         jMAdmin.add(jMenuItemProductos);
 
         jMenuBar.add(jMAdmin);
@@ -128,6 +134,16 @@ public class GestionProductos extends javax.swing.JFrame {
         escritorio.moveToFront(busquedaPorNombre);
     }//GEN-LAST:event_jMenuItemNombreActionPerformed
 
+    private void jMenuItemProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionPorProductos administracion = new GestionPorProductos();
+        administracion.setVisible(true);
+        escritorio.add(administracion);
+        escritorio.moveToFront(administracion);
+    }//GEN-LAST:event_jMenuItemProductosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -145,20 +161,21 @@ public class GestionProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionProductos().setVisible(true);
+                new GestionView().setVisible(true);
             }
         });
     }
@@ -174,5 +191,13 @@ public class GestionProductos extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemRubro;
     // End of variables declaration//GEN-END:variables
 
-    
+    private void cargarProd() {
+        listaProductos.add(new Producto(10, "Azucar", 180.75, 5, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(12, "Yerba Mate", 6505, 10, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(14, "Aceite Natura x 900ml", 890, 30, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(16, "Fideos Lucchetti spaghetti x 50gr", 450, 100, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(35, "Desodorante Rexona", 985, 13, Categorias.PERFUMERIA));
+        listaProductos.add(new Producto(49, "Jabon de tocador Lux", 325.75, 80, Categorias.PERFUMERIA));
+        listaProductos.add(new Producto(23, "CIF limpiador blanco", 531.50, 4, Categorias.LIMPIEZA));
+    }
 }

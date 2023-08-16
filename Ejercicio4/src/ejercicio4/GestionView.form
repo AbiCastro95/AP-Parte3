@@ -31,6 +31,9 @@
                   <Dimension value="[117, 21]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemProductosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
