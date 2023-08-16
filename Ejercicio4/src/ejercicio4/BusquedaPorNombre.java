@@ -5,6 +5,8 @@
  */
 package ejercicio4;
 
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -129,12 +131,15 @@ public class BusquedaPorNombre extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void armarCabecera() {
-        modelo.addColumn("Código");
-        modelo.addColumn("Descripción");
-        modelo.addColumn("Precio");
-        modelo.addColumn("Stock");
+        modelo.addColumn("CÓDIGO");
+        modelo.addColumn("DESCRIPCIÓN");
+        modelo.addColumn("PRECIO");
+        modelo.addColumn("STOCK");
 
         jTProductos.setModel(modelo);
+        
+        DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) jTProductos.getTableHeader().getDefaultRenderer();
+        headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     private void eliminarFilas() {
