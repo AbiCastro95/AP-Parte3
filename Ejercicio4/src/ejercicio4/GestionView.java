@@ -122,6 +122,12 @@ public class GestionView extends javax.swing.JFrame {
 
     private void jMenuItemRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRubroActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaPorRubro busquedaPorRubro = new BusquedaPorRubro();
+        busquedaPorRubro.setVisible(true);
+        escritorio.add(busquedaPorRubro);
+        escritorio.moveToFront(busquedaPorRubro);
     }//GEN-LAST:event_jMenuItemRubroActionPerformed
 
     private void jMenuItemNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNombreActionPerformed
