@@ -51,7 +51,7 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Gestión de Productos");
-        setPreferredSize(new java.awt.Dimension(400, 600));
+        setPreferredSize(new java.awt.Dimension(400, 350));
 
         Codigo.setText("Código");
 
@@ -193,7 +193,7 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Stock)
                     .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
                     .addComponent(jBGuardar)

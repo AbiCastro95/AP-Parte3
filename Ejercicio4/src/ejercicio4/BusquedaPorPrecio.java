@@ -46,6 +46,7 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Busqueda por Precio");
 
         jLabel1.setText("Rango de precios: ");
