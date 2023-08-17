@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Abigail Castro
  */
-public class BusquedaPorRubro extends javax.swing.JInternalFrame {
+public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int x, int y) {
@@ -22,11 +22,10 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     };
 
     /**
-     * Creates new form BusquedaPorRubro
+     * Creates new form BusquedaPorPrecio
      */
-    public BusquedaPorRubro() {
+    public BusquedaPorPrecio() {
         initComponents();
-        cargarCombo();
         armarCabecera();
     }
 
@@ -40,19 +39,28 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jCCategorias = new javax.swing.JComboBox<>();
+        jTMin = new javax.swing.JTextField();
+        jTMax = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProductos = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setTitle("Busqueda por Rubro");
+        setTitle("Busqueda por Precio");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Elija un rubro:");
+        jLabel1.setText("Rango de precios: ");
 
-        jCCategorias.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCCategoriasItemStateChanged(evt);
+        jTMin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTMinActionPerformed(evt);
+            }
+        });
+
+        jTMax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTMaxActionPerformed(evt);
             }
         });
 
@@ -69,17 +77,27 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTProductos);
 
+        jLabel2.setText("MIN");
+
+        jLabel3.setText("MAX");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jCCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTMin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTMax, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
@@ -87,41 +105,51 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jCCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCCategoriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCCategoriasItemStateChanged
+    private void jTMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTMinActionPerformed
+        // TODO add your handling code here:     
+    }//GEN-LAST:event_jTMinActionPerformed
+
+    private void jTMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTMaxActionPerformed
         // TODO add your handling code here:
-        Categorias seleccionada = (Categorias) jCCategorias.getSelectedItem();
-        if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
-            eliminarFilas();
-            for (Producto prod : GestionView.listaProductos) {
-                if (seleccionada == prod.getRubro()) {
-                    modelo.addRow(new Object[]{
-                        prod.getCodigo(),
-                        prod.getDescripcion(),
-                        prod.getPrecio(),
-                        prod.getStock()
-                    });
-                }
+        eliminarFilas();
+        double precioMinimo = Double.parseDouble(jTMin.getText());
+        double precioMaximo = Double.parseDouble(jTMax.getText());
+
+        for (Producto prod : GestionView.listaProductos) {
+            if (prod.getPrecio() > precioMinimo && prod.getPrecio() < precioMaximo) {
+                modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getStock()
+                });
             }
         }
-    }//GEN-LAST:event_jCCategoriasItemStateChanged
+    }//GEN-LAST:event_jTMaxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Categorias> jCCategorias;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTMax;
+    private javax.swing.JTextField jTMin;
     private javax.swing.JTable jTProductos;
     // End of variables declaration//GEN-END:variables
 
@@ -135,12 +163,6 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
 
         DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) jTProductos.getTableHeader().getDefaultRenderer();
         headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-    }
-
-    private void cargarCombo() {
-        jCCategorias.addItem(Categorias.COMESTIBLE);
-        jCCategorias.addItem(Categorias.LIMPIEZA);
-        jCCategorias.addItem(Categorias.PERFUMERIA);
     }
 
     private void eliminarFilas() {

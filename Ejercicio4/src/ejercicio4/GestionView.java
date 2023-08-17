@@ -100,6 +100,11 @@ public class GestionView extends javax.swing.JFrame {
 
         jMenuItemPrecio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemPrecio.setText("Por Precio");
+        jMenuItemPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPrecioActionPerformed(evt);
+            }
+        });
         jMConsultas.add(jMenuItemPrecio);
 
         jMenuBar.add(jMConsultas);
@@ -149,6 +154,16 @@ public class GestionView extends javax.swing.JFrame {
         escritorio.add(administracion);
         escritorio.moveToFront(administracion);
     }//GEN-LAST:event_jMenuItemProductosActionPerformed
+
+    private void jMenuItemPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrecioActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaPorPrecio busquedaPorPrecio = new BusquedaPorPrecio();
+        busquedaPorPrecio.setVisible(true);
+        escritorio.add(busquedaPorPrecio);
+        escritorio.moveToFront(busquedaPorPrecio);
+    }//GEN-LAST:event_jMenuItemPrecioActionPerformed
 
     /**
      * @param args the command line arguments
