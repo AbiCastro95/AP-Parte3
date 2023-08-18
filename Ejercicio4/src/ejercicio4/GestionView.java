@@ -46,6 +46,7 @@ public class GestionView extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(700, 600));
 
         escritorio.setBackground(new java.awt.Color(51, 51, 51));
+        escritorio.setPreferredSize(new java.awt.Dimension(400, 300));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -128,11 +129,11 @@ public class GestionView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
 
         pack();
@@ -226,12 +227,21 @@ public class GestionView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarProd() {
-        listaProductos.add(new Producto(10, "Azucar", 180.75, 5, Categorias.COMESTIBLE));
-        listaProductos.add(new Producto(12, "Yerba Mate", 6505, 10, Categorias.COMESTIBLE));
-        listaProductos.add(new Producto(14, "Aceite Natura x 900ml", 890, 30, Categorias.COMESTIBLE));
-        listaProductos.add(new Producto(16, "Fideos Lucchetti spaghetti x 50gr", 450, 100, Categorias.COMESTIBLE));
-        listaProductos.add(new Producto(35, "Desodorante Rexona", 985, 13, Categorias.PERFUMERIA));
-        listaProductos.add(new Producto(49, "Jabon de tocador Lux", 325.75, 80, Categorias.PERFUMERIA));
-        listaProductos.add(new Producto(23, "CIF limpiador blanco", 531.50, 4, Categorias.LIMPIEZA));
+        listaProductos.add(new Producto(10, "Azucar LEDESMA", 300, 5, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(12, "Yerba Mate CBSé x500", 650.25, 10, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(14, "Aceite Girasol NATURA x 900ml", 890, 10, Categorias.COMESTIBLE));
+        listaProductos.add(new Producto(16, "Fideos Mostachol LUCCHETTI x 500gr", 250, 50, Categorias.COMESTIBLE));
+       
+        listaProductos.add(new Producto(20, "Desodorante Roll-On REXONA", 565.35, 13, Categorias.PERFUMERIA));
+        listaProductos.add(new Producto(22, "Jabón de tocador LUX", 325.75, 25, Categorias.PERFUMERIA));
+        
+        listaProductos.add(new Producto(30, "Limpiador en crema CIF", 531.50, 5, Categorias.LIMPIEZA));
+        listaProductos.add(new Producto(34, "Limpiador en aerosol BLEM Electrónicos", 780.10, 8, Categorias.LIMPIEZA));
+        listaProductos.add(new Producto(36, "Detergente ALA Concentrado", 350.33, 10, Categorias.LIMPIEZA));
+        
+        listaProductos.add(new Producto(42, "Plato Playo DURAX 15cm", 250.0, 12, Categorias.BAZAR));
+        listaProductos.add(new Producto(44, "Plato Hondo DURAX 10cm", 175.70, 10, Categorias.BAZAR));
+        listaProductos.add(new Producto(46, "Vaso Copon RIGOLLEAU", 420.0, 6, Categorias.BAZAR));
+        listaProductos.add(new Producto(48, "Termo Acero LUMILAGRO 1l", 12000.0, 4, Categorias.BAZAR));
     }
 }

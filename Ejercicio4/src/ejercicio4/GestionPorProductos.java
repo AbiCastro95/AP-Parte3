@@ -293,7 +293,7 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
                 encontrado.setStock(stockNuevo);
                 JOptionPane.showMessageDialog(this, "Producto modificado.");
             } else {
-                JOptionPane.showMessageDialog(this, "No ahy nada que modificar.");
+                JOptionPane.showMessageDialog(this, "No hay nada que modificar.");
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "No se pueden dejar campos vacios.");

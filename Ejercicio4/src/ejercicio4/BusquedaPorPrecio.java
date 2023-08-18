@@ -48,6 +48,7 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Busqueda por Precio");
+        setPreferredSize(new java.awt.Dimension(500, 500));
 
         jLabel1.setText("Rango de precios: ");
 
@@ -76,6 +77,8 @@ public class BusquedaPorPrecio extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTProductos.setPreferredSize(new java.awt.Dimension(300, 65));
+        jTProductos.setSelectionBackground(new java.awt.Color(153, 153, 255));
         jScrollPane1.setViewportView(jTProductos);
 
         jLabel2.setText("MIN");

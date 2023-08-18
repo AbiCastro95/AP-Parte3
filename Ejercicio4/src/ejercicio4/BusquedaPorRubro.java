@@ -46,6 +46,7 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Busqueda por Rubro");
+        setPreferredSize(new java.awt.Dimension(500, 500));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Elija un rubro:");
@@ -67,6 +68,8 @@ public class BusquedaPorRubro extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTProductos.setPreferredSize(new java.awt.Dimension(300, 65));
+        jTProductos.setSelectionBackground(new java.awt.Color(153, 153, 255));
         jScrollPane1.setViewportView(jTProductos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

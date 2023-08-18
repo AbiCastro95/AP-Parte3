@@ -6,5 +6,6 @@ package ejercicio4;
 public enum Categorias {
     COMESTIBLE,
     LIMPIEZA,
-    PERFUMERIA
+    PERFUMERIA,
+    BAZAR
 }
