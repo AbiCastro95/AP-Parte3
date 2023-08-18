@@ -45,6 +45,8 @@ public class GestionView extends javax.swing.JFrame {
         setTitle("Gestor de Productos");
         setPreferredSize(new java.awt.Dimension(700, 600));
 
+        escritorio.setBackground(new java.awt.Color(51, 51, 51));
+
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
@@ -57,14 +59,18 @@ public class GestionView extends javax.swing.JFrame {
         );
 
         jMenuBar.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar.setForeground(new java.awt.Color(204, 204, 204));
 
         jMAdmin.setBackground(new java.awt.Color(51, 51, 51));
+        jMAdmin.setForeground(new java.awt.Color(204, 204, 204));
         jMAdmin.setText("Administración");
         jMAdmin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jMenuItemProductos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItemProductos.setText("Poductos");
+        jMenuItemProductos.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuItemProductos.setForeground(new java.awt.Color(204, 204, 204));
+        jMenuItemProductos.setText("Productos");
         jMenuItemProductos.setPreferredSize(new java.awt.Dimension(117, 21));
         jMenuItemProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,11 +82,14 @@ public class GestionView extends javax.swing.JFrame {
         jMenuBar.add(jMAdmin);
 
         jMConsultas.setBackground(new java.awt.Color(51, 51, 51));
+        jMConsultas.setForeground(new java.awt.Color(204, 204, 204));
         jMConsultas.setText("Consultas");
         jMConsultas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jMConsultas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jMenuItemRubro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemRubro.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuItemRubro.setForeground(new java.awt.Color(204, 204, 204));
         jMenuItemRubro.setText("Por Rubro");
         jMenuItemRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +99,8 @@ public class GestionView extends javax.swing.JFrame {
         jMConsultas.add(jMenuItemRubro);
 
         jMenuItemNombre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemNombre.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuItemNombre.setForeground(new java.awt.Color(204, 204, 204));
         jMenuItemNombre.setText("Por Nombre");
         jMenuItemNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +110,8 @@ public class GestionView extends javax.swing.JFrame {
         jMConsultas.add(jMenuItemNombre);
 
         jMenuItemPrecio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemPrecio.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuItemPrecio.setForeground(new java.awt.Color(204, 204, 204));
         jMenuItemPrecio.setText("Por Precio");
         jMenuItemPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +137,7 @@ public class GestionView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void jMenuItemRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRubroActionPerformed
         // TODO add your handling code here:
@@ -164,7 +178,6 @@ public class GestionView extends javax.swing.JFrame {
         escritorio.add(busquedaPorPrecio);
         escritorio.moveToFront(busquedaPorPrecio);
     }//GEN-LAST:event_jMenuItemPrecioActionPerformed
-
     /**
      * @param args the command line arguments
      */

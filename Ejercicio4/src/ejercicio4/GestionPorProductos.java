@@ -44,10 +44,11 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
         jCRubro = new javax.swing.JComboBox<>();
         Stock = new javax.swing.JLabel();
         jTStock = new javax.swing.JTextField();
-        jBNuevo = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Gestión de Productos");
@@ -95,10 +96,10 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        jBNuevo.setText("Nuevo");
-        jBNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBLimpiar.setText("Limpiar");
+        jBLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBNuevoMouseClicked(evt);
+                jBLimpiarMouseClicked(evt);
             }
         });
 
@@ -123,12 +124,30 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
             }
         });
 
+        jBModificar.setText("Modificar");
+        jBModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBModificarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,17 +172,8 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jCRubro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jBNuevo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(jBSalir)))
-                .addGap(19, 19, 19))
+                                    .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,10 +205,11 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
                     .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBNuevo)
+                    .addComponent(jBLimpiar)
                     .addComponent(jBGuardar)
                     .addComponent(jBEliminar)
-                    .addComponent(jBSalir))
+                    .addComponent(jBSalir)
+                    .addComponent(jBModificar))
                 .addContainerGap())
         );
 
@@ -243,22 +254,24 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
             String descripcion = jTDescripcion.getText();
             double precio = Double.parseDouble(jTPrecio.getText());
             int stock = Integer.parseInt(jTStock.getText());
-            Categorias rubroSeleccionado = (Categorias) jCRubro.getSelectedItem();// Aquí deberías obtener el rubro de algún lugar
+            Categorias rubroSeleccionado = (Categorias) jCRubro.getSelectedItem();
+            if (descripcion.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar una descripción.");
+            } else {
+                Producto nuevoProducto = new Producto(codigo, descripcion, precio, stock, rubroSeleccionado);
+                GestionView.listaProductos.add(nuevoProducto);
 
-            Producto nuevoProducto = new Producto(codigo, descripcion, precio, stock, rubroSeleccionado);
-            GestionView.listaProductos.add(nuevoProducto);
-
-            JOptionPane.showMessageDialog(this, "Producto guardado exitosamente.");
-
+                JOptionPane.showMessageDialog(this, "Producto guardado exitosamente.");
+            }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Ingrese datos válidos.");
+            JOptionPane.showMessageDialog(this, "No se pueden dejar campos vacios.");
         }
     }//GEN-LAST:event_jBGuardarMouseClicked
 
-    private void jBNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNuevoMouseClicked
+    private void jBLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseClicked
         // TODO add your handling code here:
         limpiar();
-    }//GEN-LAST:event_jBNuevoMouseClicked
+    }//GEN-LAST:event_jBLimpiarMouseClicked
 
     private void jBEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseClicked
         // TODO add your handling code here:
@@ -268,6 +281,24 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
         limpiar();
         return;
     }//GEN-LAST:event_jBEliminarMouseClicked
+
+    private void jBModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBModificarMouseClicked
+        // TODO add your handling code here:
+        try {
+            double precioNuevo = Double.parseDouble(jTPrecio.getText());
+            int stockNuevo = Integer.parseInt(jTStock.getText());
+            System.out.println(precioNuevo + " " + stockNuevo);
+            if (encontrado.getPrecio() != precioNuevo || encontrado.getStock() != stockNuevo) {
+                encontrado.setPrecio(precioNuevo);
+                encontrado.setStock(stockNuevo);
+                JOptionPane.showMessageDialog(this, "Producto modificado.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No ahy nada que modificar.");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "No se pueden dejar campos vacios.");
+        }
+    }//GEN-LAST:event_jBModificarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -279,7 +310,8 @@ public class GestionPorProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Stock;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jBNuevo;
+    private javax.swing.JButton jBLimpiar;
+    private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<Categorias> jCRubro;
     private javax.swing.JTextField jTCodigo;
