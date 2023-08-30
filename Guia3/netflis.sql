@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2023 a las 17:30:32
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 30-08-2023 a las 16:39:00
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `nesflis`
+-- Base de datos: `netflis`
 --
 
 -- --------------------------------------------------------
@@ -34,27 +34,27 @@ CREATE TABLE `seriespeliculas` (
   `creador` varchar(50) NOT NULL,
   `estreno` int(11) NOT NULL,
   `puntaje` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `seriespeliculas`
 --
 
 INSERT INTO `seriespeliculas` (`idContenido`, `titulo`, `formato`, `creador`, `estreno`, `puntaje`) VALUES
-(1, 'el planeta de los simios', 'novela', 'peter jakcson', 1963, 9.8),
-(2, 'el planeta de los simios', 'pelicula', 'franklin Schaffner', 1968, 7.9),
-(3, 'escape del planeta de los simios ', 'pelicula', 'arthur P.jacobs', 1972, 6.7),
-(4, 'conquista del planeta de los simios', 'pelicula', 'arthur P. jacobs', 1972, 6.7),
-(5, 'la batalla por el planeta de los simios', 'pelicula', 'arthut P.jacobs', 1973, 8.6),
-(6, 'el planeta de los simios', 'serie', 'mort abraham', 1974, 7),
-(8, 'el planeta de los simios', 'comic', 'el planeta de los simios franquicia', 1975, 8.2),
-(9, 'el planeta de los simios', 'pelicula', 'tim burton', 2001, 8),
-(10, 'el planeta de los simios evolucion', 'pelicula', 'rupert wyatt', 2011, 7.8),
-(11, 'el planeta de los simios confrontacion', 'pelicula', 'matt reeves', 2014, 9),
-(12, 'la guerra del planeta de los simios', 'serie ', 'matt reeves', 2017, 9.5),
-(15, 'transformers: Bumblebee', 'pelicula', 'travis knight', 2018, 7.4),
-(16, 'transformers: el ultimo caballero', 'pelicula', 'michael bay ', 2017, 8.2),
-(17, 'transformers: la guerra por cybertron- el asedio', 'serie', 'pierre boulle', 2020, 9.8);
+(1, 'El Planeta de los Simios', 'Novela', 'Peter Jackson', 1963, 9.8),
+(2, 'El Planeta de los Simios', 'Pelicula', 'Franklin Schaffner', 1968, 7.9),
+(3, 'Escape del Planeta de los Simios', 'Pelicula', 'Arthur P. Jacobs', 1972, 6.7),
+(4, 'Conquista del Planeta de los Simios', 'Pelicula', 'Arthur P. Jacobs', 1972, 6.7),
+(5, 'La Batalla por el Planeta de los Simios', 'Pelicula', 'Arthur P. Jacobs', 1973, 8.6),
+(6, 'El Planeta de los Simios', 'Serie', 'Mort Abraham', 1974, 7),
+(8, 'El Planeta de los Simios', 'Comic', 'El Planeta de los Simios Franquicia', 1975, 8.2),
+(9, 'El Planeta de los Simios', 'Pelicula', 'Tim Burton', 2001, 8),
+(10, 'El Planeta de los Simios: Evolucion', 'Pelicula', 'Rupert Wyatt', 2011, 7.8),
+(11, 'El Planeta de los Simios: Confrontacion', 'Pelicula', 'Matt Reeves', 2014, 9),
+(12, 'La Guerra del Planeta de los Simios', 'Serie', 'Matt Reeves', 2017, 9.5),
+(15, 'Transformers: Bumblebee', 'Pelicula', 'Travis Knight', 2018, 7.4),
+(16, 'Transformers: El Último Caballero', 'Pelicula', 'Michael Bay ', 2017, 8.2),
+(17, 'Transformers: La Guerra por Cybertron - El Asedio', 'Serie', 'Pierre Boulle', 2020, 9.8);
 
 --
 -- Índices para tablas volcadas
