@@ -13,7 +13,7 @@ public class SQLQueryBuilder {
     static private int cantidadColumnas;
     static String[] columna;
     static Object[] valores;
-            
+
     public static void setNombreTabla(String nombreTabla) {
         SQLQueryBuilder.nombreTabla = nombreTabla;
     }
@@ -23,7 +23,7 @@ public class SQLQueryBuilder {
         columna = new String[cantidadColumnas];
         valores = new Object[cantidadColumnas];
     }
-    
+
     public static String buildInsertQuery() {
 
         StringBuilder query = new StringBuilder("INSERT INTO " + nombreTabla + " (");
@@ -55,18 +55,20 @@ public class SQLQueryBuilder {
         return query.toString();
     }
 
-    static String buildUpdateQuery(String nombreTabla, int cantidadColumnas) {
+    static String buildUpdateQuery() {
 
         StringBuilder query = new StringBuilder("UPDATE " + nombreTabla + " SET ");
 
-        System.out.println("¿Cuántos datos va a modificar?");
-        int cantidadDatos = scanner.nextInt();
-        for (int i = 0; i < cantidadDatos; i++) {
-            System.out.println("Valor para la columna " + columna[i] + ":");
-            valores[i] = scanner.nextLine();
-            query.append(columna[i]).append(" = ").append("'").append(valores[i]).append("'");
-            if (i < columna.length - 1) {
-                query.append(",");
+        for (int i = 0; i < columna.length; i++) {
+            System.out.println("Ingrese el nombre de la columna a modificar.");
+            String columnaS = scanner.next();
+            if (columnaS.equals(columna[i])) {
+                System.out.println("Valor para la columna " + columna[i] + ":");
+                valores[i] = scanner.nextLine();
+                query.append(columna[i]).append(" = ").append("'").append(valores[i]).append("'");
+                if (i < columna.length - 1) {
+                    query.append(",");
+                }
             }
         }
 
